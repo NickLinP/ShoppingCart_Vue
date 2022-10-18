@@ -529,11 +529,11 @@ module.exports = {
 
     // 訪問data內的變數使用this是正確的
     // console.log(this.hotItem[0].id);
-    const url = "./ShoppingCart_Vue/json/hotItem.json";
+    const url = "http://cors.io/?./ShoppingCart_Vue/json/hotItem.json";
     axios
       .get(`${url}`)
       .then(function (res) {
-        console.log(url);
+        console.log(url); 
         for (let i = 0; i <= 7; i++) {
           // 這個地方無法使用this訪問到data內的變數，因為是在一個function內， this會訪問到其他物件
           // console.log(this.hotItem[0].id);
