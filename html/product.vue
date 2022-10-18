@@ -423,6 +423,7 @@ module.exports = {
     axios
       .get(`${url}`)
       .then(function (res) {
+        console.log(`axios成功:${url}`);
         objTemp.name = res.data[objTemp.productNum].name;
         objTemp.description = res.data[objTemp.productNum].description;
         objTemp.imageMain = res.data[objTemp.productNum].imageMain;
@@ -430,6 +431,7 @@ module.exports = {
         objTemp.price = res.data[objTemp.productNum].price;
       })
       .catch(function (error) {
+        console.log(`axios失敗:${url}`);
         console.log(error);
       });
   },
