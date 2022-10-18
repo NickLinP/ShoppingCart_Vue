@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寵物購物網</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome CDN -->
+    <!-- 導覽列 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css"
+        integrity="sha512-+oRH6u1nDGSm3hH8poU85YFIVTdSnS2f+texdPGrURaJh8hzmhMiZrQth6l56P4ZQmxeZzd2DqVEMqQoJ8J89A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- 整體環境 -->
+    <style>
+        body {
+            /* width: 100vw; */
+            /* height: 100vh; */
+            /* overflow-x: hidden; */
+        }
+
+        /* 物件置中 */
+        .middle {
+            margin: 0 auto;
+        }
+    </style>
+
+    <!-- 導覽列 -->
+    <style>
+        .navSticky {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar ul {
+            display: flex;
+            /* border: 1px solid gray; */
+            align-items: center;
+            margin: 0;
+        }
+
+        .navbar li {
+            list-style: none;
+
+        }
+
+        .navbar ul:nth-child(2) li {
+            /* float: left; */
+            margin: 0 10px;
+            /* border: 1px solid red; */
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar li a:hover {
+            color: black;
+        }
+    </style>
+
+    <!-- 分類選單 -->
+    <style>
+        .d-flex div {
+            width: 140px;
+            height: 50px;
+            margin: 5px;
+            /* background-color: lightblue; */
+        }
+    </style>
+
+    <!-- banner輪播 bootstrap -->
+    <!-- <style>
+        .carousel-item img {
+            width: 100%;
+        }
+    </style> -->
+
+    <!-- slick 小圖拖曳 輪播 -->
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .slick-slide {
+            margin-top: 10px;
+            padding: 0 5px 0 5px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+        }
+    </style>
+
+    <!-- 熱賣商品 -->
+    <style>
+        .hotItem div {
+            width: 300px;
+            height: 250px;
+            /* border: 1px solid green; */
+            /* background-color: lightblue; */
+        }
+
+        .hotItem img {
+            /* border: 1px solid gray; */
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            width: 70%;
+            height: 70%;
+        }
+
+        .hotItem p {
+            text-align: center;
+            width: 70%;
+            font-size: 16px;
+            /* border: 1px solid red; */
+            margin: 0 auto;
+        }
+
+        .hotItem p:nth-child(3) {
+            color: red;
+        }
+    </style>
+
+    <!-- footer -->
+    <style>
+        .footerInfo li {
+            color: gray;
+            list-style: none;
+            font-size: 8px;
+        }
+
+        .footerInfo p {
+            font-size: 8px;
+        }
+
+        .shopInfo {
+            text-align: right;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <div class="d-none d-xl-block">
+        <div class="row navSticky" style="background-color: rgb(227,104,135);">
+            <div class="col-xl-2"></div>
+            <div class="col-lg-12 col-xl-8  navbar">
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>搜商品</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>( 0 件商品 NT 0 )</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa-solid fa-user"></i>
+                            <span>會員登入</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-2"></div>
+        </div>
+    </div>
+
+    <!-- 起始圖片 -->
+    <div class="row" style="background-color: rgb(227,104,135);width: 100%;">
+        <div class="col-xl-2"></div>
+        <div class="col-lg-12 col-xl-8">
+            <img class="middle" width="100%" src="../image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg">
+        </div>
+        <div class="col-xl-2"></div>
+    </div>
+
+    <!-- 分類選單 -->
+    <div class="d-none d-xl-block">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="d-flex align-content-start flex-wrap">
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem0" src="../image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem1" src='../image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg' alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem2" src="../image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem3" src="../image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem4" src="../image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem5" src="../image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem6" src="../image/homepage/948fea9e439450e836268702b086c856_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem7" src="../image/homepage/c356751aea477c350e860deea349bbfb_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem8" src="../image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem9" src="../image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem10" src="../image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem11" src="../image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem12" src="../image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem13" src="../image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem14" src="../image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem15" src="../image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="listItem">
+                        <a href="">
+                            <img id="listItem16" src="../image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+    <!-- banner拖曳切換 slick -->
+    <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-lg-12 col-xl-8">
+            <section class="single-item">
+                <div>
+                    <img src="../image/homepage/kashima.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/689ab2cc6e05c466ece2f3ff29d8ea42.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/77c3e3f01e89cb473a104ae0a87b068c.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/95badf6a1ee8f1560f042cee637685d0.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/95badf6a1ee8f1560f042cee637685d0.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/d28ea12af302a26a85c7a8170fe99040.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/1268c4296fb79fea448316b932cadfd1.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/674c6c827a9af1ecd7e3b86f866571fd.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/3ded5f0c807d6e78f903d60ae3a33949.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/f86ebbc5f9bf8892adfd275d6d892020_compressed_1.jpg">
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-12 "></div>
+    </div>
+
+    <!-- slick 小圖拖曳 輪播 -->
+    <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-lg-12 col-xl-8">
+            <section class="slideImg">
+                <div>
+                    <img src="../image/homepage/b78cdfb667aaa564e70a28326d8ab67c.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/ebc601b36dd29b99c3861d1ecab8d346.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/2e1bf1373df59e467c961ec8f321ae0e.jpg">
+                </div>
+                <div>
+                    <img src="../image/homepage/01cd935a2485cdb4d4c3dd017262b55b.jpg">
+                </div>
+            </section>
+        </div>
+        <div class="col-xl-12"></div>
+    </div>
+
+    <!-- 熱賣商品 -->
+    <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-lg-12 col-xl-8">
+            <h3>熱賣商品</h3>
+            <div class="hotItem d-flex align-content-start flex-wrap">
+                
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/1_1-max-440.jpg" alt="">
+                    </a>
+                    <p>Superyum 極致美味 凍乾貓糧-雞肉多種魚 1kg</p>
+                    <p>NT399</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/1_8-max-440.jpg" alt="">
+                    </a>
+                    <p>Sparkles SP 補水炸彈湯罐70g-隨機口味24罐/箱</p>
+                    <p>NT588</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/54kg-1-max-440.jpg" alt="">
+                    </a>
+                    <p>CHARM 野性魅力飼料-羊肉鮭魚貓配方 5.4kg</p>
+                    <p>NT2,450</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/62881428503767103726b1738b6532fd-max-440.jpg" alt="">
+                    </a>
+                    <p>日本kashima 冰淇淋牛奶桶玩具 (內含三球冰)</p>
+                    <p>NT430</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/b4f5c838227cf377361c58ad70b19034-max-440.jpg" alt="">
+                    </a>
+                    <p>CatPool 貓侍 冷凍乾燥零食凍乾-爆蛋柳葉魚 25g</p>
+                    <p>NT260</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/b8f6ed3fffdd4f5c147b3f510816a78e-max-440.jpg" alt="">
+                    </a>
+                    <p>CatPool 貓侍 冷凍乾燥零食凍乾-鮭鯊丁 35g</p>
+                    <p>NT260</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/sc-133-2-max-440.jpg" alt="">
+                    </a>
+                    <p>CIAO 啾嚕肉泥（雞柳）14gx40條</p>
+                    <p>NT538</p>
+                </div>
+                <div>
+                    <a href="">
+                        <img src="../image/homepage/hotItem/1_1-max-440 (1).jpg" alt="">
+                    </a>
+                    <p>MOKER-CATFOOD 貓客 鮮開凍乾-雞柳條(單支裝)</p>
+                    <p>NT59</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2"></div>
+    </div>
+
+
+    <!-- footer -->
+    <div class="row" style="background-color: rgb(215,100,131); margin: 20px 0;">
+        <div class="col-xl-2"></div>
+        <div class="col-lg-12 col-xl-8">
+            <img src="../image/homepage/54643d73abf7b4dc489a60bda52ecbba.jpg" alt=""
+                style="display: block; width: 100%;">
+        </div>
+        <div class="col-xl-2"></div>
+    </div>
+
+    <div class="row footerInfo">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-1 col-lg-2">
+            <h4>會員中心</h4>
+            <li>購物運費說明</li>
+            <li>會員中心</li>
+            <li>會員等級優惠說明</li>
+            <li>紅利點數說明</li>
+            <li>訂購紀錄</li>
+        </div>
+        <div class="col-xl-1 col-lg-2">
+            <h4>客戶服務</h4>
+            <li>退貨申請</li>
+            <li>電子發票說明</li>
+            <li>超商未取說明</li>
+            <li>線上客服</li>
+            <li>知識小學堂</li>
+        </div>
+        <div class="col-xl-1 col-lg-2">
+            <h4>快速連結</h4>
+            <li>貓主食罐</li>
+            <li>貓砂</li>
+            <li>貓窩</li>
+            <li>寵物飲水機</li>
+            <li>貓飼料</li>
+        </div>
+        <div class="col-xl-1 col-lg-2">
+            <h4>關於我們</h4>
+            <li>店家說明</li>
+            <li>政策條館</li>
+            <li>隱私權聲明</li>
+            <li>加入供應商</li>
+        </div>
+        <div class="col-xl-2 col-lg-2">
+        </div>
+        <div class="col-xl-2 col-lg-2 shopInfo">
+            <h4>嚴選寵物用品</h4>
+            <p>客服專線：0800-292-886</p>
+            <p>手機請撥：(04)2330-6566</p>
+            <p>週一至週五 AM 10:00-12:00 PM 13:30-18:00)</p>
+            <p>E-mail: service@quickbuy.com.tw</p>
+        </div>
+        <div class="col-xl-2"></div>
+    </div>
+
+
+    <!-- 分類選單 圖片切換 -->
+    <script>
+        var listArrBefore = {
+            listItem0: '../image/homepage/f82ab495a650e603998d76f05aa07d16.jpg',
+            listItem1: "../image/homepage/9cb5eaafe0a6a9e165b68c51a516f6e1.jpg",
+            listItem2: '../image/homepage/8012627067f464914e1bc08c32f0f289_1.jpg',
+            listItem3: '../image/homepage/065eebf92eb9c33d87295d57c67d4e73_1.jpg',
+            listItem4: '../image/homepage/090320bbb4082c39df28d28bc28134e6_1.jpg',
+            listItem5: '../image/homepage/366445f742bbd39218a1b85d1e83f916.jpg',
+            listItem6: '../image/homepage/7b2430e1ee7869bf90d26bba491667a1_1.jpg',
+            listItem7: '../image/homepage/ca39ff63c023f9f9ad90df49e8c083c4_1.jpg',
+            listItem8: '../image/homepage/6540c51b223d105a7c4bc286253f57ed.jpg',
+            listItem9: '../image/homepage/a227e4c4f89c3babca6536eed7c1ebb7_1.jpg',
+            listItem10: '../image/homepage/3e8625ea40ee9fa76db92c38add9e8b8.jpg',
+            listItem11: '../image/homepage/b986eeca7c8d65fe4afdaca87db77298.jpg',
+            listItem12: '../image/homepage/ffdf68ffd7ebd55bd07bc2bbfe8f2193_1.jpg',
+            listItem13: '../image/homepage/743961c8bb4d03d9f15abce9d9afcf72.jpg',
+            listItem14: '../image/homepage/3032d4b32d0e2e8a998e7728262b111d.jpg',
+            listItem15: '../image/homepage/c6fec3128ac8a47de476ff6ff2f89ca0_1.jpg',
+            listItem16: '../image/homepage/f75a707e166f08f668a0d1d2bb1b5997.jpg'
+        };
+        var listArrAfter = {
+            listItem0: '../image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg',
+            listItem1: '../image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg',
+            listItem2: "../image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg",
+            listItem3: "../image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg",
+            listItem4: "../image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg",
+            listItem5: "../image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg",
+            listItem6: "../image/homepage/948fea9e439450e836268702b086c856_1.jpg",
+            listItem7: "../image/homepage/c356751aea477c350e860deea349bbfb_1.jpg",
+            listItem8: "../image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg",
+            listItem9: "../image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg",
+            listItem10: "../image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg",
+            listItem11: "../image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg",
+            listItem12: "../image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg",
+            listItem13: "../image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg",
+            listItem14: "../image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg",
+            listItem15: "../image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg",
+            listItem16: "../image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg"
+        }
+
+
+        $('.listItem').on('mouseover', function () {
+            var itemId = $(this).children('a').children('img').attr('id');
+            var status = $(this).children('a').children('img').attr('src', listArrBefore[itemId]);
+        })
+
+        $('.listItem').on('mouseleave', function () {
+            var itemId = $(this).children('a').children('img').attr('id');
+            var status = $(this).children('a').children('img').attr('src', listArrAfter[itemId]);
+        })
+
+
+
+
+    </script>
+
+    <!-- slick 小圖拖曳 輪播 -->
+    <script src="../js/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $('.slideImg').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1000,
+        });
+
+        $('.single-item').slick({
+            dots: true
+        });
+    </script>
+
+
+</body>
+
+</html>
