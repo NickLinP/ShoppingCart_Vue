@@ -533,6 +533,7 @@ module.exports = {
     axios
       .get(`${url}`)
       .then(function (res) {
+        console.log(url);
         for (let i = 0; i <= 7; i++) {
           // 這個地方無法使用this訪問到data內的變數，因為是在一個function內， this會訪問到其他物件
           // console.log(this.hotItem[0].id);
