@@ -529,7 +529,7 @@ module.exports = {
 
     // 訪問data內的變數使用this是正確的
     // console.log(this.hotItem[0].id);
-    const url = "./json/hotItem.json";
+    const url = "https://github.com/NickLinP/ShoppingCart_Vue/blob/main/json/hotItem.json";
     axios
       .get(`${url}`)
       .then(function (res) {
