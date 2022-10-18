@@ -1,8 +1,8 @@
 [
     {
         "productNum": "0",
-        "imageMain": "../image/homepage/hotItem/1_1-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/1_1-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/1_1-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/1_1-max-440-1.jpg",
         "name": "Blue Bay 倍力 Animate 無穀貓飼料 室內貓/化毛配方-鮭魚+雞肉 2kg",
         "description": [
             "◆台灣在地新鮮生產，符合AAFCO標準",
@@ -15,8 +15,8 @@
     },
     {
         "productNum": "1",
-        "imageMain": "../image/homepage/hotItem/1_8-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/1_8-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/1_8-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/1_8-max-440-1.jpg",
         "name": "Sparkles SP 補水炸彈湯罐70g-隨機口味24罐/箱",
         "description": [
             "◆90%高含水",
@@ -29,8 +29,8 @@
     },
     {
         "productNum": "2",
-        "imageMain": "../image/homepage/hotItem/54kg-1-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/54kg-1-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/54kg-1-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/54kg-1-max-440-1.jpg",
         "name": "CHARM 野性魅力飼料-羊肉鮭魚貓配方 5.4kg",
         "description": [
             "◆為您的毛小孩提供均衡完整的營養",
@@ -43,8 +43,8 @@
     },
     {
         "productNum": "3",
-        "imageMain": "../image/homepage/hotItem/62881428503767103726b1738b6532fd-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/62881428503767103726b1738b6532fd-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/62881428503767103726b1738b6532fd-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/62881428503767103726b1738b6532fd-max-440-1.jpg",
         "name": "日本kashima 冰淇淋牛奶桶玩具 (內含三球冰)",
         "description": [
             "◆冰淇淋球含有貓薄荷，吸引貓咪注意玩耍",
@@ -57,8 +57,8 @@
     },
     {
         "productNum": "4",
-        "imageMain": "../image/homepage/hotItem/b4f5c838227cf377361c58ad70b19034-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/b4f5c838227cf377361c58ad70b19034-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/b4f5c838227cf377361c58ad70b19034-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/b4f5c838227cf377361c58ad70b19034-max-440-1.jpg",
         "name": "Munchee 貪貪 雪芙糧生肉凍乾主食餐-肌體控(火雞&雞肉) 75g",
         "description": [
             "◆凍乾主食 兩種肉肉+機能保健",
@@ -71,8 +71,8 @@
     },
     {
         "productNum": "5",
-        "imageMain": "../image/homepage/hotItem/b8f6ed3fffdd4f5c147b3f510816a78e-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/b8f6ed3fffdd4f5c147b3f510816a78e-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/b8f6ed3fffdd4f5c147b3f510816a78e-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/b8f6ed3fffdd4f5c147b3f510816a78e-max-440-1.jpg",
         "name": "Munchee 貪貪 雪芙糧生肉凍乾主食餐-皮毛護理(鬼頭刀&鮭魚) 150g",
         "description": [
             "◆凍乾主食 兩種肉肉+機能保健",
@@ -85,8 +85,8 @@
     },
     {
         "productNum": "6",
-        "imageMain": "../image/homepage/hotItem/sc-133-2-max-440.jpg",
-        "imageSecondary": "../image/homepage/hotItem/sc-133-2-max-440-1.jpg",
+        "imageMain": "./image/homepage/hotItem/sc-133-2-max-440.jpg",
+        "imageSecondary": "./image/homepage/hotItem/sc-133-2-max-440-1.jpg",
         "name": "CIAO 啾嚕肉泥（雞柳）14gx40條",
         "description": [
             "◆添加綠茶消臭成分，有助減少貓咪糞便的異味",
@@ -99,8 +99,8 @@
     },
     {
         "productNum": "7",
-        "imageMain": "../image/homepage/hotItem/1_1-max-440 (1).jpg",
-        "imageSecondary": "../image/homepage/hotItem/1_1-max-440 (1)-1.jpg",
+        "imageMain": "./image/homepage/hotItem/1_1-max-440 (1).jpg",
+        "imageSecondary": "./image/homepage/hotItem/1_1-max-440 (1)-1.jpg",
         "name": "MOKER-CATFOOD 貓客 鮮開凍乾-雞柳條(單支裝)",
         "description": [
             "◆冷凍乾燥技術完整保留食材美味",
