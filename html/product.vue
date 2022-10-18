@@ -84,14 +84,14 @@
       </div>
     </div>
 
-    <img id="bgFilter" class="hidden" src="../image/homepage/bgDark.png"
+    <img id="bgFilter" class="hidden" src="./image/homepage/bgDark.png"
       style="position: fixed; z-index: 1001; opacity: 0.5" />
 
     <!-- 起始圖片 -->
     <div class="row" style="background-color: rgb(227, 104, 135)">
       <div class="col-xl-2"></div>
       <div class="col-lg-12 col-xl-8">
-        <img class="middle" width="100%" src="../image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg" />
+        <img class="middle" width="100%" src="./image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg" />
       </div>
       <div class="col-xl-2"></div>
     </div>
@@ -104,103 +104,103 @@
           <div class="d-flex align-content-start flex-wrap">
             <div class="listItem">
               <a href="">
-                <img id="listItem0" src="../image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg" alt="" />
+                <img id="listItem0" src="./image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem1" src="../image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg" alt="" />
+                <img id="listItem1" src="./image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem2" src="../image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg" alt="" />
+                <img id="listItem2" src="./image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem3" src="../image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg" alt="" />
+                <img id="listItem3" src="./image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem4" src="../image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg" alt="" />
+                <img id="listItem4" src="./image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem5" src="../image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg" alt="" />
+                <img id="listItem5" src="./image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem6" src="../image/homepage/948fea9e439450e836268702b086c856_1.jpg" alt="" />
+                <img id="listItem6" src="./image/homepage/948fea9e439450e836268702b086c856_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem7" src="../image/homepage/c356751aea477c350e860deea349bbfb_1.jpg" alt="" />
+                <img id="listItem7" src="./image/homepage/c356751aea477c350e860deea349bbfb_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem8" src="../image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg" alt="" />
+                <img id="listItem8" src="./image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem9" src="../image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg" alt="" />
+                <img id="listItem9" src="./image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem10" src="../image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg" alt="" />
+                <img id="listItem10" src="./image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem11" src="../image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg" alt="" />
+                <img id="listItem11" src="./image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem12" src="../image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg" alt="" />
+                <img id="listItem12" src="./image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem13" src="../image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg" alt="" />
+                <img id="listItem13" src="./image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem14" src="../image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg" alt="" />
+                <img id="listItem14" src="./image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem15" src="../image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg" alt="" />
+                <img id="listItem15" src="./image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg" alt="" />
               </a>
             </div>
 
             <div class="listItem">
               <a href="">
-                <img id="listItem16" src="../image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg" alt="" />
+                <img id="listItem16" src="./image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg" alt="" />
               </a>
             </div>
           </div>
@@ -289,7 +289,7 @@
     <div class="row" style="background-color: rgb(215, 100, 131); margin-top: 10px">
       <div class="col-xl-2"></div>
       <div class="col-lg-12 col-xl-8">
-        <img src="../image/homepage/54643d73abf7b4dc489a60bda52ecbba.jpg" alt="" style="width: 100%" />
+        <img src="./image/homepage/54643d73abf7b4dc489a60bda52ecbba.jpg" alt="" style="width: 100%" />
       </div>
       <div class="col-xl-2"></div>
     </div>
@@ -419,7 +419,7 @@ module.exports = {
     // console.log(this.productNum)
     // 訪問data內的變數使用this是正確的
     // console.log(this.hotItem[0].id);
-    const url = "../json/hotItem.json";
+    const url = "./json/hotItem.json";
     axios
       .get(`${url}`)
       .then(function (res) {
@@ -478,42 +478,42 @@ module.exports = {
     // <!-- 分類選單 圖片切換 -->
 
     var listArrBefore = {
-      listItem0: '../image/homepage/f82ab495a650e603998d76f05aa07d16.jpg',
-      listItem1: "../image/homepage/9cb5eaafe0a6a9e165b68c51a516f6e1.jpg",
-      listItem2: '../image/homepage/8012627067f464914e1bc08c32f0f289_1.jpg',
-      listItem3: '../image/homepage/065eebf92eb9c33d87295d57c67d4e73_1.jpg',
-      listItem4: '../image/homepage/090320bbb4082c39df28d28bc28134e6_1.jpg',
-      listItem5: '../image/homepage/366445f742bbd39218a1b85d1e83f916.jpg',
-      listItem6: '../image/homepage/7b2430e1ee7869bf90d26bba491667a1_1.jpg',
-      listItem7: '../image/homepage/ca39ff63c023f9f9ad90df49e8c083c4_1.jpg',
-      listItem8: '../image/homepage/6540c51b223d105a7c4bc286253f57ed.jpg',
-      listItem9: '../image/homepage/a227e4c4f89c3babca6536eed7c1ebb7_1.jpg',
-      listItem10: '../image/homepage/3e8625ea40ee9fa76db92c38add9e8b8.jpg',
-      listItem11: '../image/homepage/b986eeca7c8d65fe4afdaca87db77298.jpg',
-      listItem12: '../image/homepage/ffdf68ffd7ebd55bd07bc2bbfe8f2193_1.jpg',
-      listItem13: '../image/homepage/743961c8bb4d03d9f15abce9d9afcf72.jpg',
-      listItem14: '../image/homepage/3032d4b32d0e2e8a998e7728262b111d.jpg',
-      listItem15: '../image/homepage/c6fec3128ac8a47de476ff6ff2f89ca0_1.jpg',
-      listItem16: '../image/homepage/f75a707e166f08f668a0d1d2bb1b5997.jpg'
+      listItem0: './image/homepage/f82ab495a650e603998d76f05aa07d16.jpg',
+      listItem1: "./image/homepage/9cb5eaafe0a6a9e165b68c51a516f6e1.jpg",
+      listItem2: './image/homepage/8012627067f464914e1bc08c32f0f289_1.jpg',
+      listItem3: './image/homepage/065eebf92eb9c33d87295d57c67d4e73_1.jpg',
+      listItem4: './image/homepage/090320bbb4082c39df28d28bc28134e6_1.jpg',
+      listItem5: './image/homepage/366445f742bbd39218a1b85d1e83f916.jpg',
+      listItem6: './image/homepage/7b2430e1ee7869bf90d26bba491667a1_1.jpg',
+      listItem7: './image/homepage/ca39ff63c023f9f9ad90df49e8c083c4_1.jpg',
+      listItem8: './image/homepage/6540c51b223d105a7c4bc286253f57ed.jpg',
+      listItem9: './image/homepage/a227e4c4f89c3babca6536eed7c1ebb7_1.jpg',
+      listItem10: './image/homepage/3e8625ea40ee9fa76db92c38add9e8b8.jpg',
+      listItem11: './image/homepage/b986eeca7c8d65fe4afdaca87db77298.jpg',
+      listItem12: './image/homepage/ffdf68ffd7ebd55bd07bc2bbfe8f2193_1.jpg',
+      listItem13: './image/homepage/743961c8bb4d03d9f15abce9d9afcf72.jpg',
+      listItem14: './image/homepage/3032d4b32d0e2e8a998e7728262b111d.jpg',
+      listItem15: './image/homepage/c6fec3128ac8a47de476ff6ff2f89ca0_1.jpg',
+      listItem16: './image/homepage/f75a707e166f08f668a0d1d2bb1b5997.jpg'
     };
     var listArrAfter = {
-      listItem0: '../image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg',
-      listItem1: '../image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg',
-      listItem2: "../image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg",
-      listItem3: "../image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg",
-      listItem4: "../image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg",
-      listItem5: "../image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg",
-      listItem6: "../image/homepage/948fea9e439450e836268702b086c856_1.jpg",
-      listItem7: "../image/homepage/c356751aea477c350e860deea349bbfb_1.jpg",
-      listItem8: "../image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg",
-      listItem9: "../image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg",
-      listItem10: "../image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg",
-      listItem11: "../image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg",
-      listItem12: "../image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg",
-      listItem13: "../image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg",
-      listItem14: "../image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg",
-      listItem15: "../image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg",
-      listItem16: "../image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg"
+      listItem0: './image/homepage/ed992fc80829327663a94cc4d0527e0e.jpg',
+      listItem1: './image/homepage/fdc83f8b1b004f144c59c6149a8d1004.jpg',
+      listItem2: "./image/homepage/ac0bf72c79d12f266d73bf40587aa046_1.jpg",
+      listItem3: "./image/homepage/45c3ab5b100ad9386cba3ffb490446c4_1.jpg",
+      listItem4: "./image/homepage/c2195def7236fbc66536b53e1d2ea46f_1.jpg",
+      listItem5: "./image/homepage/10f9646b8e85f4c2b54da6f7fa229b32.jpg",
+      listItem6: "./image/homepage/948fea9e439450e836268702b086c856_1.jpg",
+      listItem7: "./image/homepage/c356751aea477c350e860deea349bbfb_1.jpg",
+      listItem8: "./image/homepage/1e58b94806e47bd6ea25095a723cf0f2_1.jpg",
+      listItem9: "./image/homepage/258787a3fdc2a54b7984a1fd7b5c2608_1.jpg",
+      listItem10: "./image/homepage/4e7471df31c94d56a331f784fdf40d2c.jpg",
+      listItem11: "./image/homepage/df72de10fc9bdd4b5e1347c683894194.jpg",
+      listItem12: "./image/homepage/8c8e71f1bbe170e9daec2b195d63bb13_1.jpg",
+      listItem13: "./image/homepage/4244cdf71e9ef0bf5d2c32558f6cc171.jpg",
+      listItem14: "./image/homepage/9f58fcc96ea63e8e900f4ae8df00b782.jpg",
+      listItem15: "./image/homepage/2b91c458982360a43c0e77fd779e9e1a_1.jpg",
+      listItem16: "./image/homepage/3de1a3648ce9c41aa383858666ba394b.jpg"
     }
 
 
