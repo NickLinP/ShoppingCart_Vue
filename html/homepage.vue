@@ -545,6 +545,7 @@ module.exports = {
         }
       })
       .catch(function (error) {
+        console.log(url);
         console.log(error);
       });
   },
