@@ -98,44 +98,32 @@
           imageSecondary: "",
           productNum: this.$route.query.productNum,
         },
-        pressAddShopCartCount: 0,
 
+        shopCartBuffer: [],
       };
     },
     methods: {
       addShopCart() {
+
+        console.log(`購物車新增前的內容 : ${this.shopCartBuffer}`);
         // 將產品圖片、名稱、數量、價格推到陣列內，等待顯示用
-        var shopCartBuffer;
-        if (Cookies.get("shopCartMemory") === undefined) {
-          // 如果購物車是空的就先寫入空陣列，後續才用push帶入資料，這樣在Cookie內保存內容資料才不會出錯
-          shopCartBuffer = []
-          shopCartBuffer.push([
-            this.info.imageMain,
-            this.info.name,
-            this.info.quantity,
-            this.info.price,
-          ]);
-        } else {
-          shopCartBuffer = JSON.parse(Cookies.get("shopCartMemory"));
-          shopCartBuffer.push([
-            this.info.imageMain,
-            this.info.name,
-            this.info.quantity,
-            this.info.price,
-          ]);
-        }
+        this.shopCartBuffer.push([
+          this.info.imageMain,
+          this.info.name,
+          this.info.quantity,
+          this.info.price,
+        ]);
+        console.log(`購物車新增後的內容 : ${this.shopCartBuffer}`);
 
-        // 按下加入購物車後送出訊號給外層進一步觸發更新機制
-        this.pressAddShopCartCount += 1;
-        this.$emit('update-shop-cart', this.pressAddShopCartCount);
-
-        // console.log(`購物車新增前的內容 : ${this.shopCartBuffer}`);
-
-        // console.log(`購物車新增後的內容 : ${shopCartBuffer}`);
+        // 正式使用需經過JSON.stringify處理，比較好閱讀，否則會是observer的格式
+        var apple = JSON.stringify(this.shopCartBuffer);
+        console.log(`JSON處理後 : ${apple}`);
 
         // 將加入購物車的商品推到Cookies內進行保存，並且header也可以讀取到
-        Cookies.set("shopCartMemory", JSON.stringify(shopCartBuffer));
-        console.log(`現在購物車內容是 : ${Cookies.get("shopCartMemory")}`);
+        Cookies.set("shopCartMemory", JSON.stringify(this.shopCartBuffer));
+        console.log(Cookies.get("shopCartMemory"));
+        // Cookies.set('yee','123');
+        // console.log(Cookies.get('yee'));
       },
 
       // 商品數量修改　↓
@@ -160,19 +148,17 @@
         }
         // 商品數量修改　↑
       },
-
     },
-    // beforeCreate() {
-    //   // 將Cookie的購物車紀錄帶入data內等待使用
-    //   if (Cookies.get("shopCartMemory") !== undefined) {
-    //     this.shopCartBuffer = JSON.parse(Cookies.get("shopCartMemory"));
-    //     console.log(`cookie購物車記錄是 : ${this.shopCartBuffer}`);
-    //   }else{
-    //     console.log(`cookie購物車紀錄為空`);  
-    //   }
-
-    // },
-
+    beforeCreate() {
+      // 將Cookie的購物車紀錄帶入data內等待使用
+      if (Cookies.get("shopCartMemory") !== undefined) {
+        this.shopCartBuffer = JSON.parse(Cookies.get("shopCartMemory"));
+        console.log(`cookie購物車記錄是 : ${this.shopCartBuffer}`);
+      }else{
+        console.log(`cookie購物車紀錄為空`);  
+      }
+      
+    },
     created() {
       console.log("created");
 

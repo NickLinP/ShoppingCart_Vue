@@ -48,16 +48,21 @@
 
     <!-- slick小圖輪播 -->
     <script src="./js/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- js-cookie CDN引用 -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js'
+        integrity='sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q=='
+        crossorigin='anonymous'></script>
 </head>
 
 <body>
     <div id="app">
-        <router-view></router-view>
+        <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount"></shop-header>
+        <router-view @update-shop-cart="catchShopCartUpdate"></router-view>
+        <shop-footer></shop-footer>
     </div>
 
     <script>
-
-
         const router = new VueRouter({
             routes: [
                 {
@@ -83,7 +88,26 @@
 
         let vm = new Vue({
             el: '#app',
+            data: {
+                shopCartTotalQuantity: 999,
+                shopCartTotalPrice: 0,
+                pressAddShopCartCount: 0,
+            },
             router,
+            components: {
+                'shop-header': httpVueLoader('./html/header.vue'),
+                'shop-footer': httpVueLoader('./html/footer.vue')
+            },
+            watch: {
+
+            },
+            methods: {
+                catchShopCartUpdate(clickCount) {
+                    console.log('emit觸發');
+                    console.log(clickCount);
+                    this.pressAddShopCartCount = clickCount;
+                }
+            },
         })
     </script>
 

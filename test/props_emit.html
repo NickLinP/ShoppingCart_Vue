@@ -1,0 +1,56 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Vue2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <div id="components-demo">
+        現在的 counter 數字是 {{ curlCounter }}
+        <button-counter @custom-event-trigger="customEventTriggerHappend"></button-counter>
+    </div>
+
+</body>
+
+<script>
+    // 定义一个名为 button-counter 的新组件
+    Vue.component('button-counter', {
+        props: ['title', 'message'],
+        data: function () {
+            return {
+                count: 0,
+            }
+        },
+        template:
+            `
+    <div style="background-color:gray;">
+        <h3>{{ title }}</h3>
+        <button v-on:click="(++count) && ($emit('custom-event-trigger', count))">You clicked me {{ count }} times.</button>
+    </div>
+    `
+    })
+    new Vue({
+        el: '#components-demo',
+        data: {
+            curlCounter: 0,
+        },
+        methods: {
+            customEventTriggerHappend(counter) {
+                this.curlCounter = counter;
+            },
+        },
+    });
+</script>
+
+</html>
