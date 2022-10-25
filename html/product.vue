@@ -126,6 +126,7 @@
         }
 
         // 按下加入購物車後送出訊號給外層進一步觸發更新機制
+        console.log('商品頁面內按下加入購物車');
         this.pressAddShopCartCount += 1;
         this.$emit('update-shop-cart', this.pressAddShopCartCount);
 
@@ -234,5 +235,15 @@
   .listLabel a {
     text-decoration: none;
     color: gray;
+  }
+
+  /* 去除input預設的上下鍵 */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 </style>

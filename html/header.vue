@@ -4,7 +4,7 @@
     <!-- 由於nav設定成sticky，也需要在父階容器的div，否則失效 -->
     <div class="d-none d-xl-block navSticky">
       <!-- 導覽列 -->
-      <div class="row" style="background-color: rgb(227, 104, 135)">
+      <div class="row" style="background-color: rgb(227, 104, 135); height: 50px;">
         <div class="col-xl-2"></div>
         <div class="col-lg-12 col-xl-8 navbar">
           <ul>
@@ -86,8 +86,6 @@
                 <div class="col-1">
                   <a href="" style="font-size: 8px;display: block;text-align: top;color: black;">X</a>
                 </div> -->
-
-
                 <hr>
                 <p style="text-align: right;">總計 : NT{{shopCartTotalPrice}}</p>
                 <button type="button" class="btn btn-primary" style="width: 100%;">前往結帳 ></button>
@@ -160,7 +158,7 @@
       style="position: fixed; z-index: 1001; opacity: 0.5" />
 
     <!-- 起始圖片 -->
-    <div class="row" style="background-color: rgb(227, 104, 135)">
+    <div class="row" style="background-color: rgb(227, 104, 135); margin-top: 50px;">
       <div class="col-xl-2"></div>
       <div class="col-lg-12 col-xl-8">
         <img class="middle" width="100%" src="./image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg" />
@@ -483,10 +481,10 @@
 <style scope>
   /* <!-- 導覽列 -- >  */
   .navSticky {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 999;
-    /* width: 100%; */
+    width: 100%;
   }
 
   .navbar ul {
