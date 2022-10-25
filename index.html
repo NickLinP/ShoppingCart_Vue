@@ -80,6 +80,16 @@
                     component: httpVueLoader('./html/product.vue')
                 },
                 {
+                    name: 'login',
+                    path: '/login',
+                    component: httpVueLoader('./html/login.vue')
+                },
+                {
+                    name: 'signup',
+                    path: '/signup',
+                    component: httpVueLoader('./html/signup.vue')   
+                },
+                {
                     path: '*',
                     component: { template: '<div>404 Error</div>' }
                 }

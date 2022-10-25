@@ -93,10 +93,10 @@
 
             </li>
             <li>
-              <a href="">
+              <router-link :to="{ path: 'login'}">
                 <i class="fa-solid fa-user"></i>
                 <span>會員登入</span>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -295,7 +295,7 @@
     },
     props: ['pressAddShopCartCount'],
     watch: {
-      pressAddShopCartCount:function(){
+      pressAddShopCartCount: function () {
         console.log(`監控到props資料 : ${this.pressAddShopCartCount}`);
         this.shopCartUpdate();
       }
