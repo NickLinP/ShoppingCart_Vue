@@ -9,6 +9,6 @@ https://nicklinp.github.io/ShoppingCart_Vue/
 
 
 網站架構說明 :
-使用Vue2建立，以CDN的方式引用
-Vue Router的方式進行網頁之間的切換
-個頁面之間是獨立的Component
+1. 使用Vue2建立，以CDN的方式引用
+2. Vue Router的方式進行網頁之間的切換
+3. 各頁面之間是獨立的Component
