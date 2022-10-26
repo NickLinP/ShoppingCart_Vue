@@ -296,7 +296,7 @@
     props: ['pressAddShopCartCount'],
     watch: {
       pressAddShopCartCount: function () {
-        console.log(`監控到props資料 : ${this.pressAddShopCartCount}`);
+        // console.log(`監控到props資料 : ${this.pressAddShopCartCount}`);
         this.shopCartUpdate();
       }
     },
@@ -305,11 +305,11 @@
         // 購物車顯示判斷，如果是空的會顯示空白訊息
         if (Cookies.get("shopCartMemory") === undefined) {
           this.shopCartEmpty = true;
-          console.log("購物車是空的");
+          // console.log("購物車是空的");
         } else {
           this.shopCartNotEmpty = true;
           this.shopCartUpdate();
-          console.log(`購物車的內容是 : ${this.shopCartContent}`);
+          // console.log(`購物車的內容是 : ${this.shopCartContent}`);
         }
       },
       shopCartHidden() {
@@ -320,7 +320,7 @@
       shopCartUpdate: function () {
         if (Cookies.get("shopCartMemory") != '') {
           // 需先透過JSON.parse轉換，因為存在cookie內的格式是string ，轉換後成為物件才能在渲染使用
-          console.log("將Cookie的購物車紀錄帶入data內等待使用");
+          // console.log("將Cookie的購物車紀錄帶入data內等待使用");
           this.shopCartContent = JSON.parse(Cookies.get("shopCartMemory"));
         }
 
@@ -334,8 +334,8 @@
           // 總金額計算
           this.shopCartTotalPrice = this.shopCartTotalPrice + (this.shopCartContent[i][2] * Number(this.shopCartContent[i][3]));
         }
-        console.log(`商品總數是 : ${this.shopCartTotalQuantity}`);
-        console.log(`商品總金額是 : ${this.shopCartTotalPrice}`);
+        // console.log(`商品總數是 : ${this.shopCartTotalQuantity}`);
+        // console.log(`商品總金額是 : ${this.shopCartTotalPrice}`);
       }
     },
     created() {
@@ -346,15 +346,15 @@
       let objTemp = this.hotItem;
 
       // 訪問data內的變數使用this是正確的
-      // console.log(this.hotItem[0].id);
+      // // console.log(this.hotItem[0].id);
       const url = "./json/hotItem.json";
       axios
         .get(`${url}`)
         .then(function (res) {
-          console.log(url);
+          // console.log(url);
           for (let i = 0; i <= 7; i++) {
             // 這個地方無法使用this訪問到data內的變數，因為是在一個function內， this會訪問到其他物件
-            // console.log(this.hotItem[0].id);
+            // // console.log(this.hotItem[0].id);
 
             objTemp[i].id = res.data[i].productNum;
             objTemp[i].name = res.data[i].name;
@@ -363,8 +363,8 @@
           }
         })
         .catch(function (error) {
-          console.log(url);
-          console.log(error);
+          // console.log(url);
+          // console.log(error);
         });
 
       // 第一次寫入購物車當前的商品數量以及總金額
@@ -379,18 +379,18 @@
       // 開頭的;是為了避免程式碼在打包封裝時候產生的誤判，詳細搜尋IIFE
 
       if (Cookies.get("shopCartMemory") === undefined) {
-        console.log("購物車是空的");
+        // console.log("購物車是空的");
       } else {
-        console.log("有商品");
+        // console.log("有商品");
       }
       // <!-- 手機版本 漢堡選單 -->
       const $menu = $("#navbarToggleExternalContent");
 
       function navList() {
         var status = false;
-        console.log("navList宣告");
+        // console.log("navList宣告");
         return function navListControl() {
-          console.log("navListControl執行");
+          // console.log("navListControl執行");
           if (status == false) {
             $menu.addClass("menu-show");
             $(bgFilter).removeClass("hidden");
