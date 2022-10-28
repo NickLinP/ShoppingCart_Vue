@@ -230,6 +230,7 @@ module.exports = {
   },
   mounted() {
     // <!-- slick 小圖拖曳 輪播 -->
+
     $('.slideImg').slick({
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -240,9 +241,7 @@ module.exports = {
 
     $('.single-item').slick({
       dots: true,
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 1000,
+      arrows: false
     });
   },
 };

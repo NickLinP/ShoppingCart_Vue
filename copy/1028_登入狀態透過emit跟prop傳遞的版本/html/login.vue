@@ -117,16 +117,14 @@ module.exports = {
                 // 將會員資料傳出使用
                 this.loginStatus.check = true;
                 this.loginStatus.name = memberData[memberId].name;
-                sessionStorage.setItem('login', this.loginStatus.check);
-                sessionStorage.setItem('memberName', this.loginStatus.name);
+                console.log(this.loginStatus.check);
+                console.log(this.loginStatus.name);
                 this.$emit('login-status', this.loginStatus);
             } else {
                 console.log('密碼輸入錯誤');
                 this.input.passwordSame = true;
                 return;
             }
-
-            router.push("/");
         }
     },
 }
