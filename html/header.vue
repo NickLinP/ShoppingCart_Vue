@@ -340,6 +340,7 @@
       }
     },
     created() {
+      console.log(`1109測試`);
       this.shopCartUpdate();
       this.loginStatusUpdate();
 
