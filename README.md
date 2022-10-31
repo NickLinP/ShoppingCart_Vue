@@ -10,6 +10,8 @@ https://nicklinp.github.io/ShoppingCart_Vue/
 
 
 ---- 2022.10.28 ----
+
+
 4. 可以註冊帳號以及登入，並且會看到登入後顯示會員名稱
 
 
