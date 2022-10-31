@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寵物購物網</title>
+
+    <!--slick小圖拖曳輪播-->
+    <link rel="stylesheet" type="text/css" href="./css/slick.css">
+    <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
+
+    <!-- Bootstrap 5 CDN -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="./bootstrap-5.1.1-dist/css/bootstrap.min.css">
+    <script src="./bootstrap-5.1.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery CDN -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> -->
+
+    <!-- jQuery -->
+    <script src="./js/jquery-3.6.1.js"></script>
+
+    <!-- Font Awesome CDN -->
+    <!-- 導覽列 -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css"
+        integrity="sha512-+oRH6u1nDGSm3hH8poU85YFIVTdSnS2f+texdPGrURaJh8hzmhMiZrQth6l56P4ZQmxeZzd2DqVEMqQoJ8J89A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/brands.min.css">
+    <script src="./fontawesome-free-6.2.0-web/js/all.min.js"></script>
+
+    <!-- Vue2 CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+    <!-- Vue2 -->
+    <script src="./js/vue2.js"></script>
+    <!-- Vue Router CDN -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script> -->
+    <script src="./js/vue-router.js"></script>
+    <!-- Vue HTTP Loader -->
+    <script src="./js/httpVueLoader.js"></script>
+
+    <!-- Axios CDN -->
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js'
+        integrity='sha512-rozBdNtS7jw9BlC76YF1FQGjz17qQ0J/Vu9ZCFIW374sEy4EZRbRcUZa2RU/MZ90X2mnLU56F75VfdToGV0RiA=='
+        crossorigin='anonymous'></script> -->
+    <!-- Axios -->
+    <script src="./js/axios.js"></script>
+
+    <!-- slick小圖輪播 -->
+    <script src="./js/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- js-cookie CDN引用 -->
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js'
+        integrity='sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q=='
+        crossorigin='anonymous'></script> -->
+    <!-- js-cookie引用 -->
+    <script src="./js/js_cookie.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount"
+            v-bind:login-status-data="loginStatusData"></shop-header>
+        <router-view @update-shop-cart="catchShopCartUpdate" @login-status="loginStatus"></router-view>
+        <shop-footer></shop-footer>
+    </div>
+
+    <script>
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/',
+                    component: httpVueLoader('./html/homepage.vue')
+                },
+
+                {
+                    path: '/user/:id',
+                    component: { template: '<div>User {{ $route.params.id }}</div>' }
+                },
+                {
+                    name: 'product',
+                    path: '/product',
+                    component: httpVueLoader('./html/product.vue')
+                },
+                {
+                    name: 'login',
+                    path: '/login',
+                    component: httpVueLoader('./html/login.vue')
+                },
+                {
+                    name: 'signup',
+                    path: '/signup',
+                    component: httpVueLoader('./html/signup.vue')
+                },
+                {
+                    path: '*',
+                    component: { template: '<div>404 Error</div>' }
+                }
+            ]
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                shopCartTotalQuantity: 999,
+                shopCartTotalPrice: 0,
+                pressAddShopCartCount: 0,
+                member:
+                    [
+                        {
+                            id: 0,
+                            name: '管理員',
+                            account: 'admin',
+                            password: 'admin'
+                        }
+                    ],
+                loginStatusData: {},
+            },
+            router,
+            components: {
+                'shop-header': httpVueLoader('./html/header.vue'),
+                'shop-footer': httpVueLoader('./html/footer.vue')
+            },
+            watch: {
+
+            },
+            methods: {
+                catchShopCartUpdate: function (clickCount) {
+                    // console.log('emit觸發');
+                    // console.log(clickCount);
+                    this.pressAddShopCartCount = clickCount;
+                },
+                loginStatus: function (loginStatus) {
+                    console.log(`loginStatus的emit觸發`);
+                    console.log(JSON.parse(JSON.stringify(loginStatus)));
+                    console.log(typeof (JSON.parse(JSON.stringify(loginStatus))));
+                    this.loginStatusData = JSON.parse(JSON.stringify(loginStatus));
+                }
+            },
+            created() {
+                // 會員資料初始化，如果是空白就寫入一組管理者等待使用
+                if (sessionStorage.getItem('member') == null) {
+                    // 要寫入的資料必須透過JSON.stringify序列化，否則只會傳入文字[object object]，
+                    // 而不是預想中的物件格式
+                    sessionStorage.setItem('member', JSON.stringify(this.member));
+                } else {
+                    console.log(`目前有的會員資料 : ${sessionStorage.getItem('member')}`);
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

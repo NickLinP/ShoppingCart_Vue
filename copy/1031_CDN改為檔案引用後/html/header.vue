@@ -325,7 +325,6 @@
       },
       loginStatusUpdate: function () {
         // 這裡的 'true'原因是session保存的資料都是字串格式
-        console.log(`loginStatusUpdate函式執行`);
         if (sessionStorage.getItem('login') == 'true') {
           console.log(`目前登入中`);
           this.loginStatus.check = sessionStorage.getItem('login');
