@@ -106,7 +106,7 @@
       addShopCart() {
         // 將產品圖片、名稱、數量、價格推到陣列內，等待顯示用
         var shopCartBuffer;
-        if (Cookies.get("shopCartMemory") === undefined) {
+        if (Cookies.get("shopCartMemory").length == 0) {
 
           // 如果購物車是空的就先寫入空陣列，後續才用push帶入資料，這樣在Cookie內保存內容資料才不會出錯
           shopCartBuffer = []

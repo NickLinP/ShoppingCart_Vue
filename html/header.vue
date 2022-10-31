@@ -289,7 +289,7 @@
     methods: {
       shopCartShow() {
         // 購物車顯示判斷，如果是空的會顯示空白訊息
-        if (Cookies.get("shopCartMemory") === undefined) {
+        if (Cookies.get("shopCartMemory").length == 0) {
           this.shopCartEmpty = true;
           // console.log("購物車是空的");
         } else {
@@ -304,7 +304,7 @@
       },
 
       shopCartUpdate: function () {
-        if (Cookies.get("shopCartMemory") != '') {
+        if (Cookies.get("shopCartMemory").length != 0) {
           // 需先透過JSON.parse轉換，因為存在cookie內的格式是string ，轉換後成為物件才能在渲染使用
           // console.log("將Cookie的購物車紀錄帶入data內等待使用");
           this.shopCartContent = JSON.parse(Cookies.get("shopCartMemory"));
@@ -382,8 +382,11 @@
       // <!-- axios 取得熱門商品資料及渲染 -->
       // 開頭的;是為了避免程式碼在打包封裝時候產生的誤判，詳細搜尋IIFE
 
+      // 購物車初始化，避免錯誤
       if (Cookies.get("shopCartMemory") === undefined) {
         // console.log("購物車是空的");
+        Cookies.set("shopCartMemory", []);
+        console.log(`購物車長度${Cookies.get("shopCartMemory").length}`)
       } else {
         // console.log("有商品");
       }
