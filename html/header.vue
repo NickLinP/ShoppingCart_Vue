@@ -341,6 +341,8 @@
     },
     created() {
       console.log(`1109測試`);
+      console.log(`登入狀態是${sessionStorage.getItem('login')}`);
+      console.log(typeof (sessionStorage.getItem('login')));
       this.shopCartUpdate();
       this.loginStatusUpdate();
 
