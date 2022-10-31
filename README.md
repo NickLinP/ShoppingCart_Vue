@@ -2,7 +2,7 @@
 線上網頁
 https://nicklinp.github.io/ShoppingCart_Vue/
 
-目前有的功能說明 : 
+目前有的功能說明 : <br>
 ---- 2022.10.25 ----
 1. slick.js拖曳 / 自動輪播圖片
 2. 下方熱門商品可以點擊進入商品詳細頁面
