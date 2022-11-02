@@ -43,7 +43,7 @@
 
             <button class="btn btn-dark btn-lg w-100 mt-3 fw-bold" v-on:click="login()">登入</button>
             <hr>
-            <router-link :to="{ path: 'signup' }">
+            <router-link :to="{ path: 'signup' }" class="w-100">
                 <button class="btn btn-dark btn-lg w-100 mt-3 mb-3 fw-bold">註冊新會員</button>
             </router-link>
 
