@@ -18,10 +18,11 @@
             </ul>
             <ul>
               <li v-on:mouseenter="shopCartShow()" v-on:mouseleave="shopCartHidden()">
-                <a href="">
+
+                <router-link :to="{ path: 'orderCheck' }">
                   <i class="fa-solid fa-cart-shopping"></i>
                   <span>( {{shopCartTotalQuantity}} 件商品 NT {{shopCartTotalPrice}} )</span>
-                </a>
+                </router-link>
                 <!-- 空的購物車 -->
                 <div id="shopCart" style="
                   width: 400px;
@@ -93,6 +94,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
+          <!-- 手機板購物車按鈕 -->
           <div class="shopCartIcon me-3">
             <router-link class="position-relative" :to="{ path: 'orderCheck' }">
               <i class="fas fa-shopping-cart fa-3x" style="width: 30px; color: white;"></i>
@@ -358,6 +360,7 @@
         sessionStorage.setItem('memberName', '');
         this.loginStatus.check = 'false';
         this.loginStatus.name = '';
+        router.push('/');
       }
     },
     created() {
