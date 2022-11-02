@@ -115,18 +115,18 @@
           shopCartBuffer.push([
             this.info.imageMain,
             this.info.name,
-            Number(this.info.quantity),
+            this.info.quantity,
             this.info.price,
           ]);
         } else {
-          // console.log(`購物車目前內容是${Cookies.get("shopCartMemory")}`);
+          console.log(`購物車目前內容是${Cookies.get("shopCartMemory")}`);
           shopCartBuffer = JSON.parse(Cookies.get("shopCartMemory"));
 
           // 是否購物車已有重複商品確認，如果有重複商品，則修改數量
           var productCheck = false;
           for (let i = 0; i < shopCartBuffer.length; i++) {
             if (shopCartBuffer[i][1] == this.info.name) {
-              // console.log('有重複商品');
+              console.log('有重複商品');
               // this.nifo.quantity商品數量透過Number轉換，避免再使用輸入鍵盤時會變成字串格式
               shopCartBuffer[i][2] = shopCartBuffer[i][2] + Number(this.info.quantity);
               // console.log(`購物車內的數量格式${typeof(shopCartBuffer[i][2])}`);
@@ -135,13 +135,13 @@
               break;
             }
           }
-          // console.log('跳出重複商品判斷');
+          console.log('跳出重複商品判斷');
           // console.log(`搜尋商品重複${shopCartBuffer[0].indexOf(this.info.name)}`);
 
           // 無重複商品，將該筆資料新增到購物車內
           if (productCheck == false) {
-            // console.log('無重複商品');
-            // console.log(this.info.name);
+            console.log('無重複商品');
+            console.log(this.info.name);
             shopCartBuffer.push([
               this.info.imageMain,
               this.info.name,
@@ -155,7 +155,7 @@
         // 按下加入購物車後送出訊號給外層進一步觸發更新機制
         // console.log('商品頁面內按下加入購物車');
         this.pressAddShopCartCount += 1;
-        this.$emit('product-update-shop-cart', this.pressAddShopCartCount);
+        this.$emit('update-shop-cart', this.pressAddShopCartCount);
 
 
         // 將加入購物車的商品推到Cookies內進行保存，並且header也可以讀取到

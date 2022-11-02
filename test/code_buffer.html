@@ -1,0 +1,26 @@
+<tr class="text-center" v-for="(item,index) in shopCartContent">
+    <td>
+        <a href="" class="d-block text-center">
+            <i class="fa-solid fa-xmark text-secondary"></i></a>
+    </td>
+    <!-- 商品圖片 -->
+    <td>
+        <img v-bind:src="item[0]" style=" width: 100px;">
+    </td>
+    <!-- 商品名稱 -->
+    <td>
+        {{item[1]}}
+    </td>
+    <!-- 商品數量 -->
+    <td>
+        <input type="number" min="1" max="100" class="text-center" v-model="item[2]" v-on:click="quantityCatch($event)" @input="quantityChange($event)">
+    </td>
+    <!-- 商品單價 -->
+    <td>
+        {{item[3]}}
+    </td>
+    <!-- 商品總計金額 -->
+    <td>
+        NT {{item[4]}}
+    </td>
+</tr>

@@ -77,10 +77,8 @@
 <body>
     <div id="app">
         <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount"
-            v-bind:login-status-data="loginStatusData"
-            v-bind:catch-order-check-quantity-change="checkOrderQuantityChange"></shop-header>
-        <router-view @product-update-shop-cart="catchProductShopCartUpdate"
-            @order-check-update-shop-cart="catchOrderCheckShopCartUpdate" @login-status="loginStatus"></router-view>
+            v-bind:login-status-data="loginStatusData"></shop-header>
+        <router-view @update-shop-cart="catchShopCartUpdate" @login-status="loginStatus"></router-view>
         <shop-footer></shop-footer>
     </div>
 
@@ -139,7 +137,6 @@
                 shopCartTotalQuantity: 999,
                 shopCartTotalPrice: 0,
                 pressAddShopCartCount: 0,
-                checkOrderQuantityChange: 0,
                 member:
                     [
                         {
@@ -160,20 +157,15 @@
 
             },
             methods: {
-                catchProductShopCartUpdate: function (clickCount) {
+                catchShopCartUpdate: function (clickCount) {
                     // console.log('emit觸發');
                     // console.log(clickCount);
                     this.pressAddShopCartCount = clickCount;
                 },
-                catchOrderCheckShopCartUpdate: function (quantityChangeCount) {
-                    // console.log(`商品數量已改變${quantityChangeCount}`);
-                    this.checkOrderQuantityChange = quantityChangeCount;
-                    console.log(`購物車頁面修改數量${this.checkOrderQuantityChange}`)
-                },
                 loginStatus: function (loginStatus) {
-                    // console.log(`loginStatus的emit觸發`);
-                    // console.log(JSON.parse(JSON.stringify(loginStatus)));
-                    // console.log(typeof (JSON.parse(JSON.stringify(loginStatus))));
+                    console.log(`loginStatus的emit觸發`);
+                    console.log(JSON.parse(JSON.stringify(loginStatus)));
+                    console.log(typeof (JSON.parse(JSON.stringify(loginStatus))));
                     this.loginStatusData = JSON.parse(JSON.stringify(loginStatus));
                 }
             },
@@ -184,7 +176,7 @@
                     // 而不是預想中的物件格式
                     sessionStorage.setItem('member', JSON.stringify(this.member));
                 } else {
-                    // console.log(`目前有的會員資料 : ${sessionStorage.getItem('member')}`);
+                    console.log(`目前有的會員資料 : ${sessionStorage.getItem('member')}`);
                 }
             },
         })

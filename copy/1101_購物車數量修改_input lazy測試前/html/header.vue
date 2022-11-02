@@ -94,10 +94,10 @@
           </button>
 
           <div class="shopCartIcon me-3">
-            <router-link class="position-relative" :to="{ path: 'orderCheck' }">
+            <a class="position-relative" href="#">
               <i class="fas fa-shopping-cart fa-3x" style="width: 30px; color: white;"></i>
               <span class="cartQuantity text-light bg-danger">{{shopCartTotalQuantity}}</span>
-            </router-link>
+            </a>
           </div>
 
         </nav>
@@ -286,7 +286,7 @@
         }
       }
     },
-    props: ['pressAddShopCartCount', 'loginStatusData', 'catchOrderCheckQuantityChange'],
+    props: ['pressAddShopCartCount', 'loginStatusData'],
     watch: {
       pressAddShopCartCount: function () {
         // console.log(`監控到props資料 : ${this.pressAddShopCartCount}`);
@@ -295,27 +295,17 @@
       loginStatusData: function () {
         // 監控從登入接收到的資料，如果有變化則連帶改變顯示的登入狀態
         this.loginStatusUpdate();
-      },
-      catchOrderCheckQuantityChange: function () {
-        this.shopCartUpdate();
       }
     },
     methods: {
       shopCartShow() {
         // 購物車顯示判斷，如果是空的會顯示空白訊息
-        // 使用小於等於2原因是取的購物車內容後，若內容因為在購物車頁面刪除完
-        // 則會留下[] ，因為是字串格是會被判斷是兩個字元，所以是2
-        if (Cookies.get("shopCartMemory").length <= 2) {
+        if (Cookies.get("shopCartMemory").length == 0) {
           this.shopCartEmpty = true;
-          this.shopCartNotEmpty = false;
-          console.log("購物車是空的");
-          console.log(Cookies.get("shopCartMemory").length);
+          // console.log("購物車是空的");
         } else {
           this.shopCartNotEmpty = true;
-          this.shopCartEmpty = false;
           this.shopCartUpdate();
-          console.log(`購物車不是空的`);
-          console.log(Cookies.get("shopCartMemory").length);
           // console.log(`購物車的內容是 : ${this.shopCartContent}`);
         }
       },
@@ -346,9 +336,9 @@
       },
       loginStatusUpdate: function () {
         // 這裡的 'true'原因是session保存的資料都是字串格式
-        // console.log(`loginStatusUpdate函式執行`);
+        console.log(`loginStatusUpdate函式執行`);
         if (sessionStorage.getItem('login') == 'true') {
-          // console.log(`目前登入中`);
+          console.log(`目前登入中`);
           this.loginStatus.check = sessionStorage.getItem('login');
           this.loginStatus.name = sessionStorage.getItem('memberName');
         }
@@ -361,9 +351,9 @@
       }
     },
     created() {
-      // console.log(`1109測試`);
-      // console.log(`登入狀態是${sessionStorage.getItem('login')}`);
-      // console.log(typeof (sessionStorage.getItem('login')));
+      console.log(`1109測試`);
+      console.log(`登入狀態是${sessionStorage.getItem('login')}`);
+      console.log(typeof (sessionStorage.getItem('login')));
       this.shopCartUpdate();
       this.loginStatusUpdate();
 
