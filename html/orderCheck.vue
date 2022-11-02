@@ -89,7 +89,7 @@
             </table>
             <br>
             <ul class="border p-5">
-                <li>滿 NT1,111 免運費</li>
+                <li>滿 NT1,111 免運費 <span class="text-danger" v-show="fareFreeCheck">(再 {{fareFree}} 元，享更多折扣!)</span></li>
                 <li>滿 NT3,000 / 89折 <span class="text-danger" v-show="!priceCheck">(再 {{difPrice}} 元，享更多折扣!)</span></li>
             </ul>
             <div>
@@ -101,7 +101,8 @@
                 <p>折扣金額 : NT {{discountPrice}}</p>
             </div>
             <div>
-                <button type="button" class="btn btn-primary" style="float: right;">下一步 | 計算運費</button>
+                <button type="button" class="btn btn-primary" style="float: right;" v-on:click="dataConfirm()">下一步 |
+                    計算運費</button>
             </div>
 
         </div>
@@ -116,6 +117,8 @@
                 shopCartContent: {},
                 priceCheck: false,
                 discountPrice: 0,
+                fareFree: 0,
+                fareFreeCheck: false,
                 difPrice: 0,
                 totalPrice: 0,
                 quantityChange: 0,
@@ -161,6 +164,21 @@
                         totalPrice = totalPrice + this.shopCartContent[i][4];
                     }
 
+                    // 免運費門檻計算
+                    if (totalPrice >= 1111) {
+                        console.log(`高於免運門檻`);
+                        this.fareFreeCheck = false;
+                        this.fareFree = 0;
+                    }
+
+                    if (totalPrice < 1111) {
+                        console.log(`低於免運門檻`);
+                        this.fareFreeCheck = true;
+                        this.fareFree = 1111 - totalPrice;
+                        console.log(this.fareFree);
+                    }
+
+                    // 89折門檻計算
                     if (totalPrice >= 3000) {
                         console.log(`總金額大於3000`);
                         this.priceCheck = true;
@@ -174,7 +192,7 @@
                         difPrice = 3000 - totalPrice;
                         this.difPrice = difPrice;
                         this.totalPrice = totalPrice;
-  
+
                     }
                     // 這是本頁面計算折扣差額用↑    
 
@@ -207,6 +225,22 @@
                     totalPrice = totalPrice + (item[2] * item[3]);
 
                 })
+
+                // 免運費門檻計算
+                if (totalPrice >= 1111) {
+                    console.log(`高於免運門檻`);
+                    this.fareFreeCheck = false;
+                    this.fareFree = 0;
+                }
+
+                if (totalPrice < 1111) {
+                    console.log(`低於免運門檻`);
+                    this.fareFreeCheck = true;
+                    this.fareFree = 1111 - totalPrice;
+                    console.log(this.fareFree);
+                }
+
+                // 89折計算
                 if (totalPrice >= 3000) {
                     this.priceCheck = true;
                     discountPrice = totalPrice * 0.11;
@@ -242,15 +276,23 @@
                 // 不使用splice對陣列直接處理原因是watch內判斷會無法順利觸發商品刪除
                 // 這是自己一開始在規劃資料流的部分的問題
                 // this.shopCartContent.splice(id, 1);
+            },
+            dataConfirm: function () {
+                if (Cookies.get("shopCartMemory").length <= 2) {
+                    alert('目前購物車沒有任何商品');
+                }else{
+                    console.log('可以前往下一頁');
+                    router.push('/dataConfirm');
+                }
             }
         },
         beforeCreate() {
             // 檢查登入狀態
             var loginStatus = sessionStorage.getItem("login");
 
-            if(loginStatus == null || loginStatus == 'false'){
+            if (loginStatus == null || loginStatus == 'false') {
                 router.push('/login');
-            } 
+            }
         },
         created() {
             this.totalPriceCal();

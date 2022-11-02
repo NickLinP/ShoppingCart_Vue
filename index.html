@@ -76,8 +76,7 @@
 
 <body>
     <div id="app">
-        <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount"
-            v-bind:login-status-data="loginStatusData"
+        <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount" v-bind:login-status-data="loginStatusData"
             v-bind:catch-order-check-quantity-change="checkOrderQuantityChange"></shop-header>
         <router-view @product-update-shop-cart="catchProductShopCartUpdate"
             @order-check-update-shop-cart="catchOrderCheckShopCartUpdate" @login-status="loginStatus"></router-view>
@@ -117,14 +116,14 @@
                     component: httpVueLoader('./html/orderCheck.vue')
                 },
                 {
+                    name: 'dataConfirm',
+                    path: '/dataConfirm',
+                    component: httpVueLoader('./html/dataConfirm.vue')
+                },
+                {
                     name: 'checkout',
                     path: '/checkout',
                     component: httpVueLoader('./html/checkout.vue')
-                },
-                {
-                    name: 'payTheBill',
-                    path: '/payTheBill',
-                    component: httpVueLoader('./html/payTheBill.vue')
                 },
                 {
                     path: '*',
