@@ -131,7 +131,7 @@
             <!-- 訂單內的商品顯示 -->
             <div class="col-xl-1"></div>
             <div class="col-xl-4 col-12">
-                <div style="position: sticky; top: 50px;">
+                <div style="position: sticky; top: 60px;">
 
                     <table>
                         <tbody>
