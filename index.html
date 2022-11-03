@@ -72,6 +72,9 @@
         crossorigin='anonymous'></script> -->
     <!-- js-cookie引用 -->
     <script src="./js/js_cookie.js"></script>
+
+    <!-- twzipcode引用 -->
+    <script src="./js/jquery.twzipcode.min.js"></script>
 </head>
 
 <body>
@@ -87,6 +90,7 @@
         const router = new VueRouter({
             routes: [
                 {
+                    name: 'homepage',
                     path: '/',
                     component: httpVueLoader('./html/homepage.vue')
                 },
@@ -185,6 +189,13 @@
                 } else {
                     // console.log(`目前有的會員資料 : ${sessionStorage.getItem('member')}`);
                 }
+            },
+            mounted() {
+                // 為了解決router切換頁面時會停在目前畫面高度的問題
+                // 加入這段後只要切換頁面就會自動跑到畫面的最上方
+                router.afterEach((to, from, next) => {
+                    window.scrollTo(0, 0);
+                });
             },
         })
     </script>

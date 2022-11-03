@@ -152,7 +152,9 @@
       <div class="row" style="background-color: rgb(227, 104, 135); margin-top: 50px;">
         <div class="col-xl-2"></div>
         <div class="col-lg-12 col-xl-8">
-          <img class="middle" width="100%" src="./image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg" />
+          <router-link :to="{ path: '/' }">
+            <img class="middle" width="100%" src="./image/homepage/ff567e05c936d11121d23e2b19792cf3_compressed_1.jpg" />
+          </router-link>
         </div>
         <div class="col-xl-2"></div>
       </div>
