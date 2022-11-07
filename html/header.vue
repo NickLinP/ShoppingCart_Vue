@@ -290,7 +290,7 @@
         }
       }
     },
-    props: ['pressAddShopCartCount', 'loginStatusData', 'catchOrderCheckQuantityChange'],
+    props: ['pressAddShopCartCount', 'loginStatusData', 'catchOrderCheckQuantityChange', 'dataConfirmCleanShopCart'],
     watch: {
       pressAddShopCartCount: function () {
         // console.log(`監控到props資料 : ${this.pressAddShopCartCount}`);
@@ -302,6 +302,10 @@
       },
       catchOrderCheckQuantityChange: function () {
         this.shopCartUpdate();
+      },
+      dataConfirmCleanShopCart: function () {
+        this.shopCartUpdate();
+        console.log(`header觸發dataConfirmCleanShopCart`)
       }
     },
     methods: {
@@ -341,7 +345,7 @@
           // this.shopCartContent[i][2]是number ， this.shopCartContent[i][3]是string
           // 總數計算
           this.shopCartTotalQuantity = this.shopCartTotalQuantity + this.shopCartContent[i][2];
-
+          console.log(`商品總數量是 : ${this.shopCartTotalQuantity}`);
           // 總金額計算
           this.shopCartTotalPrice = this.shopCartTotalPrice + (this.shopCartContent[i][2] * Number(this.shopCartContent[i][3]));
         }

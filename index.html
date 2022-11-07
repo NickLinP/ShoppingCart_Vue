@@ -46,9 +46,11 @@
 <body>
     <div id="app">
         <shop-header v-bind:press-add-shop-cart-count="pressAddShopCartCount" v-bind:login-status-data="loginStatusData"
-            v-bind:catch-order-check-quantity-change="checkOrderQuantityChange"></shop-header>
+            v-bind:catch-order-check-quantity-change="checkOrderQuantityChange"
+            v-bind:data-confirm-clean-shop-cart="dataConfirmCleanShopCart"></shop-header>
         <router-view @product-update-shop-cart="catchProductShopCartUpdate"
-            @order-check-update-shop-cart="catchOrderCheckShopCartUpdate" @login-status="loginStatus"></router-view>
+            @order-check-update-shop-cart="catchOrderCheckShopCartUpdate" @login-status="loginStatus"
+            @data-confirm-clean-shop-cart="catchDataConfirmCleanShopCart"></router-view>
         <shop-footer></shop-footer>
     </div>
 
@@ -119,6 +121,7 @@
                         }
                     ],
                 loginStatusData: {},
+                dataConfirmCleanShopCart: 0,
             },
             router,
             components: {
@@ -144,6 +147,10 @@
                     // console.log(JSON.parse(JSON.stringify(loginStatus)));
                     // console.log(typeof (JSON.parse(JSON.stringify(loginStatus))));
                     this.loginStatusData = JSON.parse(JSON.stringify(loginStatus));
+                },
+                catchDataConfirmCleanShopCart: function (cleanShopCart) {
+                    console.log(`index接收結帳頁面訊號`);
+                    this.dataConfirmCleanShopCart = cleanShopCart;
                 }
             },
             created() {

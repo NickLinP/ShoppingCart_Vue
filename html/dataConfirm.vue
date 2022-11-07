@@ -320,6 +320,7 @@
                     discountPrice: 0,
                     finalPrice: 0,
                 },
+                cleanShopCartCount: 0,
 
             }
         },
@@ -545,6 +546,7 @@
                     return;
                 }
                 //console.log(`資料完整`);
+                this.cleanShopCart();
                 alert('訂單送出');
                 router.push('/');
             },
@@ -562,7 +564,13 @@
                     'county': this.sendInfo.purchaser.county,
                     'district': this.sendInfo.purchaser.district,
                 });
-            }
+            },
+            cleanShopCart: function () {
+                var emptyData = [];
+                Cookies.set("shopCartMemory", JSON.stringify(emptyData));
+                this.cleanShopCartCount = this.cleanShopCartCount + 1;
+                this.$emit('data-confirm-clean-shop-cart', this.cleanShopCartCount);
+            },
         },
         beforeCreate() {
         },
