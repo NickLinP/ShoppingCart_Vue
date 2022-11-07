@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div id="apple"></div>
         <div class="row">
             <div class="col-xl-2"></div>
             <div class="col-xl-8 col-12">
@@ -22,9 +21,9 @@
         <div class="row">
 
             <!-- 收件人資料填寫 -->
-            <div class="col-xl-1"></div>
-            <div class="col-xl-4 col-12">
-                <p class="h3 fw-bolder">取貨方式</p>
+            <div class="col-1"></div>
+            <div class="col-xl-4 col-10">
+                <p class="h3 fw-bolder" id="sendMethod">取貨方式</p>
 
                 <div class="form-check border-top py-3" v-show="!sendInfo.mainIslandFreeCheck">
                     <input class="form-check-input" type="radio" name="mainIsland" id="mainIsland" value="mainIsland"
@@ -49,69 +48,91 @@
                         郵局(外島)-退換貨自付
                     </label>
                 </div>
+                <p class="text-danger" v-show="sendInfo.sendMethodCheck">請選擇取貨方式</p>
                 <hr>
                 <!-- 商品購買人資料 -->
-                <p class="h3 fw-bolder">商品購買人</p>
+                <p class="h3 fw-bolder" id="purchaserName">商品購買人</p>
                 <!-- 姓名 -->
                 <div>
                     <input type="text" class="fs-5 w-100 my-2" placeholder="請填寫真實姓名，以免無法取貨"
                         v-model="sendInfo.purchaser.name">
                 </div>
+                <p class="text-danger" v-show="sendInfo.purchaser.nameCheck">請輸入購買人姓名</p>
                 <!-- 電話 -->
                 <div>
                     <input type="tel" class="fs-5 w-100 my-2" placeholder="手機號碼"
                         v-model="sendInfo.purchaser.phoneNumber">
                 </div>
+                <p class="text-danger" v-show="sendInfo.purchaser.phoneNumberCheck">請輸入購買人的電話</p>
                 <!-- 電子信箱 -->
                 <div>
                     <input type="email" class="fs-5 w-100 my-2" placeholder="電子信箱" v-model="sendInfo.purchaser.email">
                 </div>
-
+                <p class="text-danger" v-show="sendInfo.purchaser.emailCheck">請輸入購買人的電子信箱</p>
                 <!-- 鄉鎮選擇 -->
                 <div id="twzipcodePurchaser" class="fs-5 w-100 my-2">
                     <div data-role="zipcode" data-value="信義區" style="display: none;"></div>
                 </div>
+                <div>
+                    <!-- 不在class內套用d-inline-block原因是會造成顯示異常，因此使用style宣告 -->
+                    <span class="text-danger w-50" v-show="sendInfo.purchaser.countyCheck"
+                        style="display: inline-block;">請選擇縣市</span>
+                    <span class="text-danger w-25" v-show="sendInfo.purchaser.districtCheck"
+                        style="display: inline-block;">請選擇鄉鎮</span>
+                </div>
+
                 <!-- 地址輸入 -->
                 <div>
                     <input type="text" class="fs-5 w-100 my-2" placeholder="請輸入詳細地址"
                         v-model="sendInfo.purchaser.address">
                 </div>
+                <p class="text-danger" v-show="sendInfo.purchaser.addressCheck">請輸入詳細地址</p>
                 <hr>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="dataSame"
-                        v-model="sendInfo.buyAndReciveSame">
+                        v-model="sendInfo.purchaserAndRecipientSame">
                     <label class="form-check-label" for="dataSame">
                         收件人資料與購買人資料相同
                     </label>
                 </div>
                 <hr>
                 <!-- 商品收件人資料 -->
-                <p class="h3 fw-bolder">商品收件人</p>
+                <p class="h3 fw-bolder" id="recipientName">商品收件人</p>
                 <!-- 姓名 -->
                 <div>
-                    <input type="text" class="fs-5 w-100 my-2" placeholder="請填寫真實姓名，以免無法取貨">
+                    <input type="text" class="fs-5 w-100 my-2" placeholder="請填寫真實姓名，以免無法取貨"
+                        v-model="sendInfo.recipient.name">
                 </div>
+                <p class="text-danger" v-show="sendInfo.recipient.nameCheck">請輸入收件人姓名</p>
                 <!-- 電話 -->
                 <div>
-                    <input type="tel" class="fs-5 w-100 my-2" placeholder="手機號碼">
+                    <input type="tel" class="fs-5 w-100 my-2" placeholder="手機號碼"
+                        v-model="sendInfo.recipient.phoneNumber">
                 </div>
-
+                <p class="text-danger" v-show="sendInfo.recipient.phoneNumberCheck">請輸入收件人的手機號碼</p>
                 <!-- 鄉鎮選擇 -->
                 <div id="twzipcodeRecipient" class="fs-5 w-100 my-2">
                     <div data-role="zipcode" data-value="信義區" style="display: none;"></div>
-                    <div></div>
+                </div>
+                <div>
+                    <span class="text-danger w-50" v-show="sendInfo.recipient.countyCheck"
+                        style="display: inline-block;">請選擇縣市</span>
+                    <span class="text-danger w-25" v-show="sendInfo.recipient.districtCheck"
+                        style="display: inline-block;">請選擇鄉鎮</span>
                 </div>
                 <!-- 地址輸入 -->
                 <div>
-                    <input type="text" class="fs-5 w-100 my-2" placeholder="請輸入詳細地址">
+                    <input type="text" class="fs-5 w-100 my-2" placeholder="請輸入詳細地址"
+                        v-model="sendInfo.recipient.address">
                 </div>
+                <p class="text-danger" v-show="sendInfo.recipient.addressCheck">請輸入收件人的詳細地址</p>
                 <hr>
 
                 <!-- 付款方式 -->
-                <p class="h3 fw-bolder">付款方式</p>
+                <p class="h3 fw-bolder" id="payMethod">付款方式</p>
 
                 <div class="form-check border-top py-3">
-                    <input class="form-check-input" type="radio" name="payMethio" id="creditCard" value="creditCard"
+                    <input class="form-check-input" type="radio" name="payMethiod" id="creditCard" value="creditCard"
                         v-model="sendInfo.payMethod" checked>
                     <label class="form-check-label" for="creditCard">
                         信用卡
@@ -124,6 +145,7 @@
                         貨到付款( + NT30 )
                     </label>
                 </div>
+                <p class="text-danger" v-show="sendInfo.payMethodCheck">請選擇付款方式</p>
                 <hr>
                 <p class="h4 fw-bolder">有沒有什麼想買本店卻沒有的呢 ?</p>
                 <div>
@@ -134,38 +156,25 @@
                     <textarea name="" id="" cols="30" rows="5" class="w-100"></textarea>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="ruleAgree" v-model="sendInfo.ruleAgree">
+                <div class="form-check" id="ruleAgree">
+                    <input class="form-check-input" type="checkbox" v-model="sendInfo.ruleAgree">
                     <label class="form-check-label" for="ruleAgree">
                         我已閱讀並同意 政策條款
                     </label>
                 </div>
-                <button class="btn btn-success fs-3 w-100 my-3" v-on:click="createOrder()">下一步 | 進行結帳</button>
+                <p class="text-danger" v-show="sendInfo.ruleAgreeCheck">請勾選同意政策條款</p>
+                <button class="btn btn-success fs-3 w-100 my-3" v-on:click="createOrder()">下一步 | 送出訂單</button>
             </div>
 
-            <div class="col-xl-1"></div>
+            <div class="col-1"></div>
 
             <!-- 訂單內的商品顯示 -->
-            <div class="col-xl-1"></div>
-            <div class="col-xl-4 col-12">
+            <div class="col-1"></div>
+            <div class="col-xl-4 col-10">
                 <div style="position: sticky; top: 60px;">
 
                     <table>
                         <tbody>
-                            <!-- <tr>
-                                <td>
-                                    <div class="shopCartIcon me-3 position-relative">
-                                        <img src="./image/homepage/-2_1.jpg" alt="" class="border"
-                                            style="height: 100px;">
-                                        <span class="cartQuantity text-light bg-primary">1</span>
-                                    </div>
-                                </td>
-                                <td class="align-text-top">
-                                    喜樂寵宴 極寵宴 生食冷凍乾燥飼料-骨骼腦部發育 (幼貓成長配方-鮮嫩雞肉+鴨肉 )500g
-                                </td>
-                                <td style="width: 100px;"></td>
-                                <td class="text-end">NT1000</td>
-                            </tr> -->
 
                             <tr v-for="(item,index) in shopCartContentBuffer">
                                 <td>
@@ -244,7 +253,7 @@
 
                 </div>
             </div>
-            <div class="col-xl-1"></div>
+            <div class="col-1"></div>
         </div>
 
 
@@ -259,30 +268,49 @@
                 shopCartContentBuffer: {},
                 sendInfo: {
                     sendMethod: '',
+                    sendMethodCheck: false,
                     mainIsland: false,
                     mainIslandFree: false,
                     mainIslandFreeCheck: false,
                     outerIsland: false,
-                    buyAndReciveSame: false,
+                    purchaserAndRecipientSame: false,
                     payMethod: '',
+                    payMethodCheck: false,
                     payByCreditCard: false,
                     payByCash: false,
                     ruleAgree: false,
+                    ruleAgreeCheck: false,
                     purchaser: {
                         name: '',
                         phoneNumber: '',
                         email: '',
+                        // 鄉鎮縣市是透過query選擇器直接讀值，而非直接在vue綁定，原因是使用twzipcode
+                        // 而選擇縣市的input是使用js插入，因此無法直接綁定屬性
                         county: '',
-                        township: '',
+                        district: '',
                         address: '',
+
+                        nameCheck: false,
+                        phoneNumberCheck: false,
+                        emailCheck: false,
+                        countyCheck: false,
+                        districtCheck: false,
+                        addressCheck: false,
                     },
                     recipient: {
                         name: '',
                         phoneNumber: '',
                         email: '',
                         county: '',
-                        township: '',
+                        district: '',
                         address: '',
+
+                        nameCheck: false,
+                        phoneNumberCheck: false,
+                        emailCheck: false,
+                        countyCheck: false,
+                        districtCheck: false,
+                        addressCheck: false,
                     }
                 },
                 billInfo: {
@@ -298,7 +326,7 @@
         watch: {
             // 訪問物件形式的資料必須要用""包起來，否則VS Code會出現錯誤
             'sendInfo.buyAndReciveSame': function () {
-                console.log('購買與收件人相同');
+                //console.log('購買與收件人相同');
             },
             'sendInfo.sendMethod': function () {
 
@@ -307,7 +335,7 @@
                     this.sendInfo.mainIslandFree = false;
                     this.sendInfo.outerIsland = false;
                     this.billInfo.fare = 90;
-                    // console.log(`本島寄送${this.sendInfo.mainIsland}`);
+                    // //console.log(`本島寄送${this.sendInfo.mainIsland}`);
                 };
 
                 if (this.sendInfo.sendMethod == 'outerIsland') {
@@ -315,7 +343,7 @@
                     this.sendInfo.mainIslandFree = false;
                     this.sendInfo.outerIsland = true;
                     this.billInfo.fare = 180;
-                    // console.log(`外島寄送${this.sendInfo.outerIsland}`);
+                    // //console.log(`外島寄送${this.sendInfo.outerIsland}`);
                 };
 
                 // 本島寄送免運
@@ -324,37 +352,42 @@
                     this.sendInfo.mainIslandFree = true;
                     this.sendInfo.outerIsland = false;
                     this.billInfo.fare = 0;
-                    console.log(`本島免運${this.sendInfo.mainIslandFree}`);
+                    //console.log(`本島免運${this.sendInfo.mainIslandFree}`);
                 };
+            },
+            'sendInfo.purchaserAndRecipientSame': function () {
+                if (this.sendInfo.purchaserAndRecipientSame) {
+                    this.purchaserAndRecipientDataSame();
+                }
             },
             'sendInfo.payMethod': function () {
                 if (this.sendInfo.payMethod == 'creditCard') {
                     this.payByCreditCard = true;
                     this.payByCash = false;
                     this.billInfo.cashHandlingFee = 0;
-                    // console.log(`信用卡付款${this.payByCreditCard} `);
+                    // //console.log(`信用卡付款${this.payByCreditCard} `);
                 };
 
                 if (this.sendInfo.payMethod == 'cash') {
                     this.payByCreditCard = false;
                     this.payByCash = true;
                     this.billInfo.cashHandlingFee = 30;
-                    // console.log(`現金付款${this.payByCash}`);
+                    // //console.log(`現金付款${this.payByCash}`);
                 }
             },
             // 運費變更時更新金額
             'billInfo.fare': function () {
-                console.log('運費變更');
+                //console.log('運費變更');
                 this.finalPriceCal();
             },
             // 手續費變更時更新金額
             'billInfo.cashHandlingFee': function () {
-                console.log('手續費變更');
+                //console.log('手續費變更');
                 this.finalPriceCal();
             },
             'sendInfo.purchaser.county': function () {
-                console.log(this.sendInfo.purchaser.county);
-            }
+                //console.log(this.sendInfo.purchaser.county);
+            },
         },
         methods: {
             shopCartInitialize: function () {
@@ -390,26 +423,146 @@
                 this.billInfo.finalPrice = this.billInfo.productPrice + this.billInfo.fare + this.billInfo.cashHandlingFee - this.billInfo.discountPrice;
             },
             createOrder: function () {
+                // 資料檢查旗標初始化
+                this.sendInfo.sendMethodCheck = false;
+                this.sendInfo.purchaser.nameCheck = false;
+                this.sendInfo.purchaser.phoneNumberCheck = false;
+                this.sendInfo.purchaser.emailCheck = false;
+                this.sendInfo.purchaser.countyCheck = false;
+                this.sendInfo.purchaser.districtCheck = false;
+                this.sendInfo.purchaser.addressCheck = false;
+
+                this.sendInfo.recipient.nameCheck = false;
+                this.sendInfo.recipient.phoneNumberCheck = false;
+                this.sendInfo.recipient.countyCheck = false;
+                this.sendInfo.recipient.districtCheck = false;
+                this.sendInfo.recipient.addressCheck = false;
+
+                this.sendInfo.payMethodCheck = false;
+                this.sendInfo.ruleAgreeCheck = false;
+
+
                 // 取貨方式選擇檢查
                 if (this.sendInfo.sendMethod == '') {
-                    console.log('請選擇取貨方式');
-                    window.location.hash('mainIsland');
+                    this.sendInfo.sendMethodCheck = true;
+                    this.scrollToPosititon('sendMethod');
+                    return;
                 }
 
-                // 商品購買人資料檢查
+                // 商品購買人資料檢查，會全部都檢查過一遍再跳轉回輸入資料的地方
+                let purchaserCheck = false;
+                if (this.sendInfo.purchaser.name == '') {
+                    //console.log('請輸入購買人姓名');
+                    this.sendInfo.purchaser.nameCheck = true;
+                    purchaserCheck = true;
+                }
+                if (this.sendInfo.purchaser.phoneNumber == '') {
+                    //console.log('請輸入購買人的聯絡電話');
+                    this.sendInfo.purchaser.phoneNumberCheck = true;
+                    purchaserCheck = true;
+                }
+                if (this.sendInfo.purchaser.email == '') {
+                    //console.log('請輸入購買人的電子信箱');
+                    this.sendInfo.purchaser.emailCheck = true;
+                    purchaserCheck = true;
+                }
+
+                this.sendInfo.purchaser.county = document.querySelector("#twzipcodePurchaser [name='county']").value;
+                if (this.sendInfo.purchaser.county == '') {
+                    //console.log('請選擇購買人的居住縣市');
+                    this.sendInfo.purchaser.countyCheck = true;
+                    purchaserCheck = true;
+                }
+
+                this.sendInfo.purchaser.district = document.querySelector("#twzipcodePurchaser [name='district']").value;
+                if (this.sendInfo.purchaser.district == '') {
+                    //console.log('請選擇購買人的居住鄉鎮');
+                    this.sendInfo.purchaser.districtCheck = true;
+                    purchaserCheck = true;
+                }
+
+                if (this.sendInfo.purchaser.address == '') {
+                    //console.log('請選擇購買人的詳細地址');
+                    this.sendInfo.purchaser.addressCheck = true;
+                    purchaserCheck = true;
+                }
+                if (purchaserCheck) {
+                    this.scrollToPosititon('purchaserName');
+                    return;
+                }
 
                 // 商品收件人資料檢查
+                let recipientCheck = false;
+                if (this.sendInfo.recipient.name == '') {
+                    //console.log('請輸入收件人姓名');
+                    //console.log(this.sendInfo.recipient.name);
+                    this.sendInfo.recipient.nameCheck = true;
+                    recipientCheck = true;
+                }
+                if (this.sendInfo.recipient.phoneNumber == '') {
+                    //console.log('請輸入收件人的聯絡電話');
+                    this.sendInfo.recipient.phoneNumberCheck = true;
+                    recipientCheck = true;
+                }
+
+                this.sendInfo.recipient.county = document.querySelector("#twzipcodeRecipient [name='county']").value;
+                if (this.sendInfo.recipient.county == '') {
+                    //console.log('請選擇收件人的居住縣市');
+                    this.sendInfo.recipient.countyCheck = true;
+                    recipientCheck = true;
+                }
+
+                this.sendInfo.recipient.district = document.querySelector("#twzipcodeRecipient [name='district']").value;
+                if (this.sendInfo.recipient.district == '') {
+                    //console.log('請選擇收件人的居住鄉鎮');
+                    this.sendInfo.recipient.districtCheck = true;
+                    recipientCheck = true;
+                }
+
+                if (this.sendInfo.recipient.address == '') {
+                    //console.log('請選擇收件人的詳細地址');
+                    this.sendInfo.recipient.addressCheck = true;
+                    recipientCheck = true;
+                }
+                if (recipientCheck) {
+                    this.scrollToPosititon('recipientName');
+                    return;
+                }
 
                 // 付款方式檢查
                 if (this.sendInfo.payMethod == '') {
-                    console.log('請選擇付款方式');
+                    //console.log('請選擇付款方式');
+                    this.sendInfo.payMethodCheck = true;
+                    this.scrollToPosititon('payMethod');
+                    return;
                 }
 
                 // 同意條款檢查
                 if (this.sendInfo.ruleAgree == false) {
-                    console.log('請勾選同意條款');
+                    //console.log('請勾選同意條款');
+                    this.sendInfo.ruleAgreeCheck = true;
+                    this.scrollToPosititon('ruleAgree');
+                    return;
                 }
+                //console.log(`資料完整`);
+                alert('訂單送出');
+                router.push('/');
             },
+            scrollToPosititon(target) {
+                window.scrollTo(0, ($(`#${target}`).offset().top - 70));
+            },
+            purchaserAndRecipientDataSame: function () {
+                this.sendInfo.recipient.name = this.sendInfo.purchaser.name;
+                this.sendInfo.recipient.phoneNumber = this.sendInfo.purchaser.phoneNumber;
+                this.sendInfo.recipient.address = this.sendInfo.purchaser.address;
+
+                this.sendInfo.purchaser.county = document.querySelector("#twzipcodePurchaser [name='county']").value;;
+                this.sendInfo.purchaser.district = document.querySelector("#twzipcodePurchaser [name='district']").value;;
+                $('#twzipcodeRecipient').twzipcode('set', {
+                    'county': this.sendInfo.purchaser.county,
+                    'district': this.sendInfo.purchaser.district,
+                });
+            }
         },
         beforeCreate() {
         },
@@ -423,13 +576,10 @@
             $('#twzipcodePurchaser').twzipcode();
             $('#twzipcodePurchaser > select').addClass('w-50');
             // $('#twzipcodePurchaser [name="county"]').attr('v-model', 'sendInfo.purchaser.county');
-            $('#twzipcodePurchaser [name="county"]').attr('onchange', 'console.log(value)');
-
-
+            // $('#twzipcodePurchaser [name="county"]').attr('onchange', '//console.log(value)');
 
             $('#twzipcodeRecipient').twzipcode();
             $('#twzipcodeRecipient > select').addClass('w-50');
-
         },
     }
 </script>
@@ -517,11 +667,12 @@
         top: -10px;
     }
 
+    /* 
     #twzipcodePurchaser [name='county'] {
         background-color: red;
     }
 
     #twzipcodePurchaser [name='district'] {
         background-color: green;
-    }
+    } */
 </style>
