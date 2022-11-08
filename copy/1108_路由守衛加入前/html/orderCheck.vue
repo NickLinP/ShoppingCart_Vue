@@ -288,11 +288,11 @@
         },
         beforeCreate() {
             // 檢查登入狀態
-            // var loginStatus = sessionStorage.getItem("login");
+            var loginStatus = sessionStorage.getItem("login");
 
-            // if (loginStatus == null || loginStatus == 'false') {
-            //     router.push('/login');
-            // }
+            if (loginStatus == null || loginStatus == 'false') {
+                router.push('/login');
+            }
         },
         created() {
             this.totalPriceCal();

@@ -87,25 +87,24 @@
                     path: '/orderCheck',
                     component: httpVueLoader('./html/orderCheck.vue'),
                     beforeEnter: (to, from, next) => {
-                        let loginStatus = sessionStorage.getItem("login");
-                        if (loginStatus == 'true')next();   
-                        else next({ name: 'login' });                      
+                        console.log('按下進入購物車');
+                        console.log(from);
                     }
                 },
-            {
-                name: 'dataConfirm',
-                path: '/dataConfirm',
-                component: httpVueLoader('./html/dataConfirm.vue')
-            },
-            {
-                name: 'checkout',
-                path: '/checkout',
-                component: httpVueLoader('./html/checkout.vue')
-            },
-            {
-                path: '*',
-                component: { template: '<div>404 Error</div>' }
-            }
+                {
+                    name: 'dataConfirm',
+                    path: '/dataConfirm',
+                    component: httpVueLoader('./html/dataConfirm.vue')
+                },
+                {
+                    name: 'checkout',
+                    path: '/checkout',
+                    component: httpVueLoader('./html/checkout.vue')
+                },
+                {
+                    path: '*',
+                    component: { template: '<div>404 Error</div>' }
+                }
             ]
         })
 
