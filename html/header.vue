@@ -103,14 +103,22 @@
           </div>
 
         </nav>
-        <div class="collapse position-fixed" id="navbarToggleExternalContent">
+        <div class="collapse position-fixed" id="navbarToggleExternalContent" style="">
           <div class="bg-dark">
             <ul>
-              <li>
-                <a href="">
-                  <i class="fa-solid fa-user" style="color: white"></i>
+              <li v-if="loginStatus.check == 'false'">
+                <router-link :to="{ path: 'login'}">
+                  <i class="fa-solid fa-user"></i>
                   <span>會員登入</span>
-                </a>
+                </router-link>
+              </li>
+              <li v-if="loginStatus.check == 'true'">
+                <div>
+                  <a href="">
+                    <span>{{loginStatus.name}} (一般會員)</span>
+                  </a>
+                  <a href="#" v-on:click="logout()">登出</a>
+                </div>
               </li>
               <li>
                 <a href="">
@@ -146,7 +154,7 @@
       </div>
 
       <img id="bgFilter" class="hidden" src="./image/homepage/bgDark.png"
-        style="position: fixed; z-index: 1001; opacity: 0.5" />
+        style="position: fixed; z-index: 1; opacity: 0.5" />
 
       <!-- 起始圖片 -->
       <div class="row" style="background-color: rgb(227, 104, 135); margin-top: 50px;">
@@ -559,7 +567,7 @@
     min-height: 100%;
     top: 56px;
     width: 50%;
-    z-index: 9999;
+    z-index: 0;
   }
 
   #navbarToggleExternalContent.menu-show {

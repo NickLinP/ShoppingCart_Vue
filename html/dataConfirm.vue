@@ -69,6 +69,7 @@
                     <input type="email" class="fs-5 w-100 my-2" placeholder="電子信箱" v-model="sendInfo.purchaser.email">
                 </div>
                 <p class="text-danger" v-show="sendInfo.purchaser.emailCheck">請輸入購買人的電子信箱</p>
+                <p class="text-danger" v-show="sendInfo.purchaser.emailRuleCheck">請輸入正確的電子信箱</p>
                 <!-- 鄉鎮選擇 -->
                 <div id="twzipcodePurchaser" class="fs-5 w-100 my-2">
                     <div data-role="zipcode" data-value="信義區" style="display: none;"></div>
@@ -293,6 +294,7 @@
                         nameCheck: false,
                         phoneNumberCheck: false,
                         emailCheck: false,
+                        emailRuleCheck: false,
                         countyCheck: false,
                         districtCheck: false,
                         addressCheck: false,
@@ -429,6 +431,7 @@
                 this.sendInfo.purchaser.nameCheck = false;
                 this.sendInfo.purchaser.phoneNumberCheck = false;
                 this.sendInfo.purchaser.emailCheck = false;
+                this.sendInfo.purchaser.emailRuleCheck = false;
                 this.sendInfo.purchaser.countyCheck = false;
                 this.sendInfo.purchaser.districtCheck = false;
                 this.sendInfo.purchaser.addressCheck = false;
@@ -466,7 +469,17 @@
                     //console.log('請輸入購買人的電子信箱');
                     this.sendInfo.purchaser.emailCheck = true;
                     purchaserCheck = true;
+                } else {
+                    let emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;;
+                    if (this.sendInfo.purchaser.email.search(emailRule) != -1) {
+                        // console.log("信箱規則正確");
+                    } else {
+                        // console.log("信箱規則錯誤");
+                        this.sendInfo.purchaser.emailRuleCheck = true;
+                        purchaserCheck = true;
+                    }
                 }
+
 
                 this.sendInfo.purchaser.county = document.querySelector("#twzipcodePurchaser [name='county']").value;
                 if (this.sendInfo.purchaser.county == '') {

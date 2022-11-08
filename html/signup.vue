@@ -10,7 +10,7 @@
                     <span>></span>
                     <router-link :to="{ path: 'login'}">
                         <span>會員登入</span>
-                      </router-link>
+                    </router-link>
                     <span>></span>
                     <a href="">註冊</a>
                 </p>
@@ -40,6 +40,7 @@
             </div>
             <p class="text-danger" v-show="dataCheck.account">輸入電子信箱</p>
             <p class="text-danger" v-show="dataCheck.accountSame">電子信箱重複註冊</p>
+            <p class="text-danger" v-show="dataCheck.accountRuleCheck">請輸入正確的電子信箱</p>
 
             <div class="mt-2">
                 <span>
@@ -100,6 +101,7 @@
                 dataCheck: {
                     name: false,
                     account: false,
+                    accountRuleCheck: false,
                     accountSame: false,
                     password: false,
                     passwordSame: false,
@@ -135,8 +137,8 @@
                     memberData.push(data);
 
                     sessionStorage.setItem('member', JSON.stringify(memberData));
-                    console.log(`session內更新後的會員資料是`);
-                    console.log(sessionStorage.getItem('member'));
+                    // console.log(`session內更新後的會員資料是`);
+                    // console.log(sessionStorage.getItem('member'));
                     alert('註冊完成');
                     // 用來跳轉回登入頁面
                     router.push("/login");
@@ -147,64 +149,75 @@
                 this.dataCheck.name = false;
                 this.dataCheck.account = false;
                 this.dataCheck.accountSame = false;
+                this.dataCheck.accountRuleCheck = false;
                 this.dataCheck.password = false;
                 this.dataCheck.passwordCheck = false;
                 this.dataCheck.passwordSame = false;
                 this.dataCheck.agreeRule = false;
 
                 if (this.input.agreeRule == false) {
-                    console.log(`尚未同意條款`);
+                    // console.log(`尚未同意條款`);
                     this.dataCheck.agreeRule = true;
                     return false;
                 }
 
                 if (this.input.name == '') {
-                    console.log(`請輸入姓名`);
+                    // console.log(`請輸入姓名`);
                     this.dataCheck.name = true;
                     return false;
                 }
 
                 if (this.input.account == '') {
-                    console.log(`請輸入帳號`);
+                    // console.log(`請輸入帳號`);
                     this.dataCheck.account = true;
                     return false;
+                } else {
+                    let emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;;
+                    if (this.input.account.search(emailRule) != -1) {
+                        // console.log("信箱規則正確");
+                    } else {
+                        // console.log("信箱規則錯誤");
+                        this.dataCheck.accountRuleCheck = true;
+                        return false;
+                    }
                 }
 
+
                 let accountSameCheck = this.accountSameCheck();
-                console.log(`帳號是否重複 : ${accountSameCheck}`);
+                // console.log(`帳號是否重複 : ${accountSameCheck}`);
                 if (accountSameCheck) {
-                    console.log(`帳號重複`);
+                    // console.log(`帳號重複`);
                     this.dataCheck.accountSame = true;
                     return false;
                 }
 
                 if (this.input.password == '') {
-                    console.log(`請輸入密碼`);
+                    // console.log(`請輸入密碼`);
                     this.dataCheck.password = true;
                     return false;
                 }
                 if (this.input.passwordCheck == '') {
-                    console.log(`請再次輸入密碼`);
+                    // console.log(`請再次輸入密碼`);
                     this.dataCheck.passwordCheck = true;
                     return false;
                 }
                 if (this.input.password != this.input.passwordCheck) {
-                    console.log(`兩次輸入的密碼不相同`);
+                    // console.log(`兩次輸入的密碼不相同`);
                     this.dataCheck.passwordSame = true;
                     return false;
                 }
-                console.log(`資料全部都有輸入`);
+                // console.log(`資料全部都有輸入`);
                 return true;
             },
             accountSameCheck: function () {
 
-                console.log(`帳號檢查函式執行 : 觸發密碼${this.dataCheck.password}`);
+                // console.log(`帳號檢查函式執行 : 觸發密碼${this.dataCheck.password}`);
                 let memberBuffer = JSON.parse(sessionStorage.getItem('member'));
                 var check = false;
-                console.log(memberBuffer);
+                // console.log(memberBuffer);
                 for (let i = 0; i < memberBuffer.length; i++) {
                     if (this.input.account == memberBuffer[i].account) {
-                        console.log('該信箱已經被註冊');
+                        // console.log('該信箱已經被註冊');
                         check = true;
                         break;
                     }
@@ -212,27 +225,7 @@
                 return check;
             },
         },
-        created() {
-            // sessionStorage.setItem('member', JSON.stringify(this.member)); 
-            // console.log(`1現在的會員資料有 : ${JSON.stringify(sessionStorage.getItem('member'))}`)
 
-            // ----物件的操作以及讀取方式測試，已歸檔到筆記 1026 
-            // var apple = this.member;
-            // // push有效，但只會看到[object object]
-            // console.log(apple.length);
-            // apple.push({'aaa':'123'});
-            // apple[0].id = 123;
-            // console.log(`預設的會員資料 : ${apple}`);
-            // console.log(typeof (apple));
-
-            // // 透過JSON.stringify將該物件序列化後，才可以看到真正的格式
-            // console.log(`JSON.stringify後的 : ${JSON.stringify(apple)}`);
-            // console.log(typeof (JSON.stringify(apple)));
-
-            // // JSON.pares會再將資料轉換成物件，因此會看到[object object]
-            // console.log(`JSON.pares後的${JSON.parse(JSON.stringify(apple))}`);
-            // console.log(typeof(JSON.parse(JSON.stringify(apple))));
-        },
     }
 </script>
 
